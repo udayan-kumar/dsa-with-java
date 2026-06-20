@@ -8,7 +8,7 @@ public class return_type {
     }
 
     public static void main(String[] args) {
-        int num = prashun(8);
+        int num = prashun(4);
        System.out.println(3+ num);
     }
 }
