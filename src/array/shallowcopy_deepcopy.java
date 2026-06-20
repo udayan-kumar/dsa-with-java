@@ -22,7 +22,7 @@ public class shallowcopy_deepcopy {
         // deepcopy
 
         int[] arr = {22,32,41,35};
-        int [] y = Arrays.copyOf(arr,arr.length);  // deep copy
+        int [] y = Arrays.copyOf(arr,arr.length);  // deep copy syntex
 
         y[0] = 2023 ;
 

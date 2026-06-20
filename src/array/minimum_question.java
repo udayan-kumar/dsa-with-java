@@ -12,8 +12,8 @@ public class minimum_question {
         int n = ud.nextInt();
 
         int[] arr = new int[n];
-        int min =arr[0];
-            // int min = Integer.MAX_VALUE;
+        // int min =arr[0];
+            int min = Integer.MAX_VALUE;
 
 
         System.out.print("enter element of array: ");
