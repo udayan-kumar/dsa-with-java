@@ -52,9 +52,19 @@ public class rotate_array {
          int [] arr = {11,2,3,4,56,64};
          int n = arr.length;
          
-         reverse(arr,0 , 5);
-         reverse(arr, 0 , 3);
-         reverse(arr, 4, 5);
+         reverse(arr,0 , 1);
+        //  for(int ele : arr){
+        //     System.out.print(ele + " ");
+        //  }
+         reverse(arr, 2 , n-1);
+        //  for(int ele : arr){
+        //     System.out.print(ele + " ");
+        //  }
+         reverse(arr, 0, n-1);
+        //  for (int ele : arr) {
+        //     System.out.print(ele + " ");
+        //  }
+        udayan(arr);
          
     }
 
@@ -65,11 +75,19 @@ public class rotate_array {
             arr[j] = temp;
             i++;
             j--;
-
+            
         }
+
+        
         // for(int ele : arr){
         //     System.out.println(ele);
         // }
         
+    }
+    public static void udayan(int arr []){
+        
+        for(int ele : arr){
+            System.out.print(ele + " ");
+        }
     }
 }
