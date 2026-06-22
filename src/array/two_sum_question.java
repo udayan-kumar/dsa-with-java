@@ -1,6 +1,6 @@
 // check target element is the sum of any two element of an array or not;
 
-package array.array_basics;
+package src.array;
 
 public class two_sum_question {
     public static void main(String[] args) {
@@ -17,6 +17,8 @@ public class two_sum_question {
                 }
                 
             }
-        }
+            
+                
+         }
     }
 }
