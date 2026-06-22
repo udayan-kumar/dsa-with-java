@@ -1,4 +1,4 @@
-// multiply odd indexed element by b2 and add 10 to even indexed element
+// multiply odd indexed element by  2 and add 10 to even indexed element
 
 package src.array;
 
