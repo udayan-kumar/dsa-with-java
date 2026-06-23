@@ -9,8 +9,8 @@ public class segregate_0s {
         int[] arr = {0,1,3,0,5,0,0,10};
         int n = arr.length;
         
-        int numzeros = 0;
-        int numone = 0;
+        // int numzeros = 0;
+        // int numone = 0;
 
         // for(int ele : arr){
         //     if(ele == 0) numzeros++;
