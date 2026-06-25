@@ -13,8 +13,8 @@ public class insertion_sort {
                 j--;
             } 
         }
-        for(int ele : arr){
-            System.out.print(ele + " ");
-        }
+            for(int ele : arr){
+                System.out.print(ele + " ");
+            }
     }
 }
