@@ -26,7 +26,7 @@ public class searching {
                 break;
             }
             else 
-                System.out.println(-1);
+                System.out.println();
         }
     }
 }

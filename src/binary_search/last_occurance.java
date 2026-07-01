@@ -36,6 +36,8 @@ public class last_occurance {
             //   System.out.println(firindex);
             ans.add(firindex);
              
+             low = 0;
+             high = n-1;
               while(low <= high){
                 int mid = (low + high)/2;
                  if(arr[mid]< target){
