@@ -14,9 +14,7 @@ public class minimum_out_of_maximum_element {
                 }
             }
             min = rowmax;
-            if(rowmax > min){
-                System.out.println(min);
-            }
+            System.out.println(min);
         }
         
     }
