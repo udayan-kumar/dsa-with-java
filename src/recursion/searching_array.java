@@ -13,4 +13,3 @@ public class searching_array {
         return axist(arr, indx+1, target);
     }
 }
-53:38
