@@ -7,12 +7,8 @@ public class count_inversion {
     public static void main(String[] args) {
         int[] arr = {2,4,1,3,5};
         count = 0;
-       sort(arr);
-
-    //    for(int ele : arr){
-    //     System.out.print(ele + " ");
-    //    }
-    System.out.println(count);
+        sort(arr);
+       System.out.println(count);
     }
 
     public static void sort(int[] arr){
@@ -34,8 +30,6 @@ public class count_inversion {
         sort(b);
 
         merge(a, b, arr);
-        
-        
     }
 
     public static void merge (int[] a, int[] b, int[] c){
@@ -45,6 +39,7 @@ public class count_inversion {
                 c[k++] = a[i++];
             }
             else {
+                count += a.length-i;
                 c[k++] = b[j++];
             }
         }
@@ -52,7 +47,5 @@ public class count_inversion {
         while(i<a.length) c[k++] = a[i++];
 
         while(j<b.length) c[k++] = b[j++];
-        if(a[i] > b[j]) count += (a.length-i);
-        
     }
 }
