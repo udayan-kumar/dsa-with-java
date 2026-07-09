@@ -1,4 +1,4 @@
-package src.merge_sort;
+package src.merge_sort_recursion;
 
 import java.util.*;
 

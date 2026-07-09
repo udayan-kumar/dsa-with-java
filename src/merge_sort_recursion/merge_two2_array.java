@@ -1,11 +1,10 @@
-package src.merge_sort;
+package src.merge_sort_recursion;
 
 public class merge_two2_array {
     public static void main(String[] args) {
         int[] arr1 = {1,3,7,9,10};
         int[] arr2 = {2,4,5,6,8};
         int[] arr3 = new int[arr1.length + arr2.length];
-        
         
         int i =0,j=0,k=0;
 
@@ -34,8 +33,5 @@ public class merge_two2_array {
             for(int ele : arr3){
                 System.out.print(ele+ " ");
             }
-        
     }
-
-
 }
