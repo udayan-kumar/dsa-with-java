@@ -7,6 +7,7 @@ public class sorting_array_recursion {
          int[] arr = {3,5,9,2,1,4,8,10,6,7};
          cyclic(arr);
          System.out.println(Arrays.toString(arr));
+       
     }
 
     public static void cyclic(int[] arr){
