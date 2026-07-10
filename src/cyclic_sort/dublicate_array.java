@@ -10,7 +10,7 @@ public class dublicate_array {
         int i = 0 ;
         while(i<arr.length){
             int correctindex= arr[i];
-            if(i<arr.length && arr[i] != arr[correctindex]){
+            if(arr[i]<arr.length && arr[i] != arr[correctindex]){
                 swap(arr, i , correctindex);
             }
             else i++;
