@@ -21,8 +21,8 @@ public class set_mismatched {
 
         for(int j = 0; j<arr.length;j++){
             if(arr[j] != j+1) {
-                System.out.println(j);
-                System.out.println(j+1);
+                System.out.println("dublicate number: " +j);
+                System.out.println("missing number: " + (j+1));
             }
         }
     }
