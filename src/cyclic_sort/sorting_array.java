@@ -6,19 +6,18 @@ public class sorting_array {
        
         int i = 0;
         while(i<arr.length){
-            if(arr[i] == i+1){
-                i++;
-            }
+            int correctindex = arr[i] - 1;
+            if(arr[i] == arr[correctindex]) i++;
             else {
-                 int index = arr[i]-1;
                 int temp = arr[i];
-                arr[i] = arr[index];
-                arr[index] = temp;
-              
+                arr[i] = arr[correctindex];
+                arr[correctindex] = temp;
             }
         }
+
         for(int ele : arr){
             System.out.print(ele + " ");
         }
+
     }
 }
