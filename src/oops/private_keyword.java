@@ -20,7 +20,7 @@ class students {
             roll = x;
         }
 
-        // public void p(){
+        // public void p(){  // i can print private value
         //     print();
         // }
 }
