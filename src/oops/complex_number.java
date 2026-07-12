@@ -1,14 +1,14 @@
 package src.oops;
 
 class complex_num{
-    int x;
-    int y;
+    double x;
+    double y;
 
     complex_num(){
 
     }
 
-    complex_num(int x, int y){
+    complex_num(double x, double y){
         this.x = x;
         this.y = y;
     }
@@ -24,8 +24,8 @@ class complex_num{
     }
 
     void multiply(complex_num z){
-        x *= z.x;
-        y *= z.y;
+        x = x*z.x - y*z.y;
+        y = y*z.x + y*z.x;
     }
 }
 public class complex_number {
@@ -45,4 +45,3 @@ public class complex_number {
         z2.print();
     }
 }
-3:07
