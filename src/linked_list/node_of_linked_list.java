@@ -1,13 +1,13 @@
 package src.linked_list;
 
-class Node{
-    int val;
-    Node next;  // default vallue --> null;
+// class Node{
+//     int val;
+//     Node next;  // default vallue --> null;
 
-    Node(int val){
-        this.val = val;
-    }
-}
+//     Node(int val){
+//         this.val = val;
+//     }
+// }
 public class node_of_linked_list {
     public static void main(String[] args) {
         // 10 20 30 40 50
@@ -23,7 +23,7 @@ public class node_of_linked_list {
             b.next = c;
             c.next = d;
             d.next = e;
-            
+
         System.out.println(a);
         System.out.println(b);
         System.out.println(a.next);
