@@ -1,12 +1,12 @@
 package src.linked_list;
-class Node{
-    int val;
-    Node next;  // default vallue --> null;
+// class Node{
+//     int val;
+//     Node next;  // default vallue --> null;
 
-    Node(int val){
-        this.val = val;
-    }
-}
+//     Node(int val){
+//         this.val = val;
+//     }
+// }
 public class display_list {
 
     public static void displayrecursively(Node head){
