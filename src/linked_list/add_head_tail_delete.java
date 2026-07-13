@@ -28,7 +28,7 @@ class linkedlist{  // user deffined data structure
         if(head==null) head = tail = temp;  // for empty linked list
         else {
              tail.next = temp;
-            tail = temp;
+             tail = temp;
         }
          size++;
     }
@@ -55,8 +55,6 @@ class linkedlist{  // user deffined data structure
         }
         return -1;
     }
-
-   
 
     void display(){
         if(head == null) return;
@@ -95,6 +93,21 @@ class linkedlist{  // user deffined data structure
         }
         return temp.val;
     }
+
+     void delete(int index) {
+        if(index<0 || index>=size){
+            System.out.println("invalid index");
+            return;
+        }
+        if(index==0) deleteAtHead();
+        Node temp = head;
+        for(int i = 0; i<=index-1;i++){
+            temp= temp.next;
+        }
+        temp.next = temp.next.next;
+        if(index == size-1) tail=temp; // delete last index
+        size--;
+    }
 }
 
 public class add_head_tail_delete {
@@ -114,6 +127,9 @@ public class add_head_tail_delete {
         l1.display();
 
         l1.insert(200,3);
+        l1.display();
+
+        l1.delete(4);
         l1.display();
 
       System.out.println(l1.get(3));
