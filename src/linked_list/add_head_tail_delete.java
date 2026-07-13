@@ -44,6 +44,20 @@ class linkedlist{  // user deffined data structure
           size--;
     }
 
+    int search(int val){  // searching index
+        if(head==null) return -1;
+        Node temp = head;
+        int index = 0;
+        while(tail!=null){
+            if(temp.val==val) return index;
+            temp = temp.next;
+            index++;
+        }
+        return -1;
+    }
+
+   
+
     void display(){
         if(head == null) return;
         Node temp = head;
@@ -52,6 +66,34 @@ class linkedlist{  // user deffined data structure
             temp = temp.next;
         }
         System.out.println();
+    }
+
+    void insert(int val, int index) {  // insert at any index
+       if(index<0 || index>size){
+        System.out.println("invalid index");
+        return;
+       }
+       if(index==0) addAtHead(val);
+       else
+        if(index==size) addAtTail(val);
+       else{
+        Node temp = head;
+        for(int i = 0; i<index;i++){
+            temp = temp.next;
+        }
+        Node newtemp = new Node(val);
+        newtemp.next = temp.next;
+        temp.next = newtemp;
+        size++;
+       }
+    }
+
+    int get(int index) {
+        Node temp = head;
+        for(int i = 0;i<index;i++){
+            temp = temp.next;
+        }
+        return temp.val;
     }
 }
 
@@ -70,6 +112,11 @@ public class add_head_tail_delete {
 
         l1.deleteAtHead();
         l1.display();
+
+        l1.insert(200,3);
+        l1.display();
+
+      System.out.println(l1.get(3));
 
         System.out.println(l1.size);
     }
