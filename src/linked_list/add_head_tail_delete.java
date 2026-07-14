@@ -1,12 +1,12 @@
 package src.linked_list;
-// class Node{
-//     int val;
-//     Node next;  // default vallue --> null;
+class Node{
+    int val;
+    Node next;  // default vallue --> null;
 
-//     Node(int val){
-//         this.val = val;
-//     } 
-// }
+    Node(int val){
+        this.val = val;
+    } 
+}
 
 class linkedlist{  // user deffined data structure
     Node head;
