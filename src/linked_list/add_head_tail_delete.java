@@ -151,6 +151,24 @@ class linkedlist{  // user deffined data structure
         return dummy.next;
     }
 
+    Node mergesort(Node head){
+        if(head.next==null) return head;
+        Node slow = head;
+        Node fast = head;
+        while(fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+           
+        }
+         Node a = slow.next;
+            slow.next = null;
+        head = mergesort(head); 
+        a = mergesort(a);
+       return merge(head, a);
+        
+    }
+
+
      void delete(int index) {
         if(index<0 || index>=size){
             System.out.println("invalid index");
@@ -206,6 +224,19 @@ public class add_head_tail_delete {
 
        l1.merge(l1.head, l2.head);
        l1.display();
+
+       linkedlist l3 = new linkedlist();
+        l3.addAtTail(3);
+        l3.addAtTail(5);
+        l3.addAtTail(2);
+        l3.addAtTail(4);
+        l3.addAtTail(1);
+        l3.display();
+
+        l3.head = l3.mergesort(l3.head);
+        l3.display();
+
+       
       
     }
 }
