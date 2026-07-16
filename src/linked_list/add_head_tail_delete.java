@@ -13,6 +13,8 @@ class Node{
 
 class linkedlist{  // user deffined data structure
     Node head;
+    // Node head1;
+    // Node head2;
     Node tail;
     int size;
 
@@ -128,6 +130,29 @@ class linkedlist{  // user deffined data structure
            
     }
 
+    // Node merge(Node head1 , Node head2){
+    //     Node dummy = new Node(-1);
+    //     Node i = head1;
+    //     Node j = head2;
+    //     Node k = dummy;
+    //     while (i!=null && j!=null){
+    //         if(i.val<j.val){
+    //             k.next = i;
+    //             i = i.next;
+    //         }
+    //         else{
+    //             k.next = j;
+    //             j =j.next;
+    //         }
+    //         k = k.next;
+    //     }
+    //     if(i==null) k.next = i;
+    //     else k.next = j;
+    //     return dummy.next;
+
+
+    // }
+
      void delete(int index) {
         if(index<0 || index>=size){
             System.out.println("invalid index");
@@ -148,10 +173,10 @@ public class add_head_tail_delete {
     public static void main(String[] args) {
         linkedlist l1 = new linkedlist();
         l1.addAtTail(10);
-        l1.addAtTail(20);
         l1.addAtTail(30);
         l1.addAtTail(40);
-        l1.addAtTail(50);
+        l1.addAtTail(60);
+        l1.addAtTail(70);
         l1.display();
 
     //     l1.addAtHead(100);
@@ -170,7 +195,18 @@ public class add_head_tail_delete {
 
         // System.out.println(l1.size);
 
-        l1.rotate(3);
-        l1.display();
+        // l1.rotate(3);
+        // l1.display();
+
+        linkedlist l2 = new linkedlist();
+        l2.addAtTail(20);
+        l2.addAtTail(50);
+        l2.addAtTail(80);
+        l2.addAtTail(90);
+        l2.addAtTail(100);
+        l2.display();
+
+       
+      
     }
 }
