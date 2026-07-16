@@ -185,7 +185,7 @@ class linkedlist{  // user deffined data structure
     }
 }
 
-public class add_head_tail_delete {
+public class all_question_linked_list {
     public static void main(String[] args) {
         linkedlist l1 = new linkedlist();
         l1.addAtTail(10);
