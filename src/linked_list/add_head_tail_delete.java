@@ -130,28 +130,26 @@ class linkedlist{  // user deffined data structure
            
     }
 
-    // Node merge(Node head1 , Node head2){
-    //     Node dummy = new Node(-1);
-    //     Node i = head1;
-    //     Node j = head2;
-    //     Node k = dummy;
-    //     while (i!=null && j!=null){
-    //         if(i.val<j.val){
-    //             k.next = i;
-    //             i = i.next;
-    //         }
-    //         else{
-    //             k.next = j;
-    //             j =j.next;
-    //         }
-    //         k = k.next;
-    //     }
-    //     if(i==null) k.next = i;
-    //     else k.next = j;
-    //     return dummy.next;
-
-
-    // }
+    Node merge(Node head1 , Node head2){
+        Node dummy = new Node(-1);
+        Node i = head1;
+        Node j = head2;
+        Node k = dummy;
+        while (i!=null && j!=null){
+            if(i.val<j.val){
+                k.next = i;
+                i = i.next;
+            }
+            else{
+                k.next = j;
+                j =j.next;
+            }
+            k = k.next;
+        }
+        if(i==null) k.next = j;
+        else k.next = i;
+        return dummy.next;
+    }
 
      void delete(int index) {
         if(index<0 || index>=size){
@@ -206,7 +204,8 @@ public class add_head_tail_delete {
         l2.addAtTail(100);
         l2.display();
 
-       
+       l1.merge(l1.head, l2.head);
+       l1.display();
       
     }
 }
