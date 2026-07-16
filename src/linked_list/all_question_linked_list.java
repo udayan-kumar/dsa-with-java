@@ -13,8 +13,6 @@ class Node{
 
 class linkedlist{  // user deffined data structure
     Node head;
-    // Node head1;
-    // Node head2;
     Node tail;
     int size;
 
@@ -168,6 +166,28 @@ class linkedlist{  // user deffined data structure
         
     }
 
+    Node partion_list(Node head , int x){
+        Node d1 = new Node(-1);
+        Node d2 = new Node(-1);
+        Node t1 = d1;  // smaller
+        Node t2 = d2;  // larger
+        Node t = head;
+        while(t != null){
+           if(t.val < x){
+            t1.next = t;
+            t1 = t1.next;
+           }
+           else{
+            t2.next = t;
+            t2 = t2.next;
+           }
+           t = t.next;
+        }
+        t1.next = d2.next;
+        t2.next = null;
+        return d1.next;
+
+    }
 
      void delete(int index) {
         if(index<0 || index>=size){
@@ -193,7 +213,7 @@ public class all_question_linked_list {
         l1.addAtTail(40);
         l1.addAtTail(60);
         l1.addAtTail(70);
-        l1.display();
+        // l1.display();
 
     //     l1.addAtHead(100);
     //     l1.display();
@@ -220,10 +240,10 @@ public class all_question_linked_list {
         l2.addAtTail(80);
         l2.addAtTail(90);
         l2.addAtTail(100);
-        l2.display();
+        // l2.display();
 
-       l1.merge(l1.head, l2.head);
-       l1.display();
+    //    l1.merge(l1.head, l2.head);
+    //    l1.display();
 
        linkedlist l3 = new linkedlist();
         l3.addAtTail(3);
@@ -231,10 +251,23 @@ public class all_question_linked_list {
         l3.addAtTail(2);
         l3.addAtTail(4);
         l3.addAtTail(1);
-        l3.display();
+        // l3.display();
 
-        l3.head = l3.mergesort(l3.head);
-        l3.display();
+        // l3.head = l3.mergesort(l3.head);
+        // l3.display();
+
+        linkedlist l4 = new linkedlist();
+        l4.addAtTail(2);
+        l4.addAtTail(4);
+        l4.addAtTail(3);
+        l4.addAtTail(0);
+        l4.addAtTail(1);
+        l4.addAtTail(5);
+        l4.display();
+       
+        l4.partion_list(l4.head, 3);
+        l4.display();
+
 
        
       
