@@ -1,4 +1,7 @@
 package src.linked_list;
+
+import src.methods.return_type;
+
 class Node{
     int val;
     Node next;  // default vallue --> null;
@@ -94,6 +97,37 @@ class linkedlist{  // user deffined data structure
         return temp.val;
     }
 
+    Node rotate(int k ){
+        if(k==0) return head;
+        if(head == null || head.next == null) return head;
+        int length= 0;
+        Node temp = head;
+        while(temp != null){
+            temp = temp.next;
+            length++;
+        }
+        k %= length;
+        Node slow = head;
+        Node fast = head;
+       
+       for(int i = 0; i<k+1;i++){
+        fast = fast.next;
+       }
+       while(fast != null){
+        slow = slow.next;
+        fast = fast.next;
+       }
+       Node a = slow.next;
+       slow.next = null;
+       Node t = a;
+       while(t.next != null){
+        t = t.next;
+       }
+       t.next = head;
+       return a;
+           
+    }
+
      void delete(int index) {
         if(index<0 || index>=size){
             System.out.println("invalid index");
@@ -120,20 +154,23 @@ public class add_head_tail_delete {
         l1.addAtTail(50);
         l1.display();
 
-        l1.addAtHead(100);
+    //     l1.addAtHead(100);
+    //     l1.display();
+
+    //     l1.deleteAtHead();
+    //     l1.display();
+
+    //     l1.insert(200,3);
+    //     l1.display();
+
+    //     l1.delete(4);
+    //     l1.display();
+
+    //   System.out.println(l1.get(3));
+
+        // System.out.println(l1.size);
+
+        l1.rotate(3);
         l1.display();
-
-        l1.deleteAtHead();
-        l1.display();
-
-        l1.insert(200,3);
-        l1.display();
-
-        l1.delete(4);
-        l1.display();
-
-      System.out.println(l1.get(3));
-
-        System.out.println(l1.size);
     }
 }
