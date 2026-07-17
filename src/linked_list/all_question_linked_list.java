@@ -189,6 +189,28 @@ class linkedlist{  // user deffined data structure
 
     }
 
+    Node even_odd(Node head){
+        Node d1 = new Node(-1);
+        Node d2 = new Node(-1);
+        Node t1 = d1;  // smaller
+        Node t2 = d2;  // larger
+        Node t = head;
+        while(t != null){
+           if(t.val%2==0){
+            t1.next = t;
+            t1 = t1.next;
+           }
+           else{
+            t2.next = t;
+            t2 = t2.next;
+           }
+           t = t.next;
+        }
+        t1.next = d2.next;
+        t2.next = null;
+        return d1.next;
+    }
+
      void delete(int index) {
         if(index<0 || index>=size){
             System.out.println("invalid index");
@@ -266,6 +288,9 @@ public class all_question_linked_list {
         l4.display();
        
         l4.partion_list(l4.head, 3);
+        l4.display();
+
+        l4.even_odd(l4.head);
         l4.display();
 
 
