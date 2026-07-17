@@ -230,18 +230,29 @@ class linkedlist{  // user deffined data structure
     // }
 
     Node reverse(Node head){
-        Node forward = head;
-        Node current = head;
-        Node pre =null;
-
-        while(current==null){
-            forward = current.next;
-            current.next = pre;
-            pre = current;
-            current = forward;
+        if(head==null || head.next ==null){
+            return head;
         }
-        return pre;
+        Node a = head.next;
+        head.next = null;
+        Node b = reverse(a);
+        a.next = head;
+        return b;
     }
+
+    // Node reverse(Node head){
+    //     Node forward = head;
+    //     Node current = head;
+    //     Node pre =null;
+
+    //     while(current!=null){
+    //         forward = current.next;
+    //         current.next = pre;
+    //         pre = current;
+    //         current = forward;
+    //     }
+    //     return pre;
+    // }
 
      void delete(int index) {
         if(index<0 || index>=size){
@@ -325,7 +336,7 @@ public class all_question_linked_list {
         l4.even_odd(l4.head);
         l4.display();
 
-        l4.reverse(l4.head);
+        l4.head = l4.reverse(l4.head);
         l4.display();
 
 
