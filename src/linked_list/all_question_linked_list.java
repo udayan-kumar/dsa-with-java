@@ -212,6 +212,26 @@ class linkedlist{  // user deffined data structure
         return d1.next;
     }
 
+    Node even_odd_index(Node head){
+        Node d1 = new Node(-1);
+        Node d2 = new Node(-1);
+        Node t1 = d1;
+        Node t2 = d2;
+        Node t = head;
+      
+        while(t!=null){
+          t1.next = t;
+          t = t.next;
+          t1 = t1.next;
+          t2.next = t;
+          if(t!=null) t = t.next;
+          t2 = t2.next;
+        }
+       t1.next = d2.next;
+       return d1.next;
+        
+    }
+
     // Node reverse(Node head){
     //     Node temp = head;
     //     ArrayList<Node> ans = new ArrayList<>();
@@ -253,22 +273,46 @@ class linkedlist{  // user deffined data structure
     //     return pre;
     // }
 
+    // boolean palindrom(Node head){
+    //     Node temp = head;
+    //     ArrayList<Integer> arr = new ArrayList<>();
+    //     while(temp!=null){
+    //         arr.add(temp.val);
+    //         temp = temp.next;
+    //     }
+    //     int i = 0 , j = arr.size()-1;
+    //     while(i<=j){
+    //         int a = arr.get(i) , b = arr.get(j);
+    //         if(a!=b) return false;
+    //         i++;
+    //         j--;
+    //     }
+    //     return true;
+    // }
+
     boolean palindrom(Node head){
-        Node temp = head;
-        ArrayList<Integer> arr = new ArrayList<>();
-        while(temp!=null){
-            arr.add(temp.val);
-            temp = temp.next;
+        Node slow = head;
+        Node fast = head;
+        while(fast.next!=null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        int i = 0 , j = arr.size()-1;
-        while(i<=j){
-            int a = arr.get(i) , b = arr.get(j);
-            if(a!=b) return false;
-            i++;
-            j--;
+        Node head2 = slow.next;
+        slow.next = null;
+        head2 = reverse(head2);
+
+        Node i = head;
+        Node j = head2;
+        while(j!=null){
+            if(i.val!=j.val) return false;
+            i = i.next;
+            j = j.next;
         }
         return true;
     }
+
+    
+
 
      void delete(int index) {
         if(index<0 || index>=size){
@@ -344,23 +388,25 @@ public class all_question_linked_list {
         l4.addAtTail(0);
         l4.addAtTail(1);
         l4.addAtTail(5);
-        // l4.display();
+        l4.display();
        
         // l4.partion_list(l4.head, 3);
         // l4.display();
 
-        l4.even_odd(l4.head);
-        l4.display();
+        // l4.even_odd(l4.head);
+        // l4.display();
 
-        l4.head = l4.reverse(l4.head);
-        l4.display();
+        // l4.head = l4.reverse(l4.head);
+        // l4.display();
 
-        linkedlist l5 = new linkedlist();
-        l5.addAtTail(1);
-        l5.addAtTail(2);
-        l5.addAtTail(1);
+    //     linkedlist l5 = new linkedlist();
+    //     l5.addAtTail(1);
+    //     l5.addAtTail(2);
+    //     l5.addAtTail(1);
        
-       System.out.println(l5.palindrom(l5.head));
+    //    System.out.println(l5.palindrom(l5.head));
 
+       l4.even_odd_index(l4.head);
+        l4.display();
     }
 }
