@@ -311,7 +311,22 @@ class linkedlist{  // user deffined data structure
         return true;
     }
 
-    
+    Node swap_in_pair(Node head){
+        if(head==null || head.next==null) return head;
+        Node dummy = new Node(-1);
+        Node a = head;
+        Node b = head.next;
+        Node c= dummy;
+        while(a!=null && b!=null){
+            c.next = b;
+            a.next = b.next;
+            b.next = a;
+            c = a;
+            a = a.next;
+            if(a!=null) b = a.next;
+        }
+        return dummy.next;
+    }
 
 
      void delete(int index) {
@@ -407,6 +422,9 @@ public class all_question_linked_list {
     //    System.out.println(l5.palindrom(l5.head));
 
        l4.even_odd_index(l4.head);
+        // l4.display();
+
+       l4.swap_in_pair(l4.head);
         l4.display();
     }
 }
