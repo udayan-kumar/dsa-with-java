@@ -1,5 +1,7 @@
 package src.linked_list;
 
+import java.util.ArrayList;
+
 import src.methods.return_type;
 
 class Node{
@@ -211,6 +213,36 @@ class linkedlist{  // user deffined data structure
         return d1.next;
     }
 
+    // Node reverse(Node head){
+    //     Node temp = head;
+    //     ArrayList<Node> ans = new ArrayList<>();
+    //     while(temp!=null){
+    //         ans.add(temp);
+    //         temp = temp.next;
+    //     }
+    //     int n = ans.size();
+    //     for(int i = n-1 ; i>=1;i--){
+    //         ans.get(i).next = ans.get(i-1);
+    //     }
+    //     ans.get(0).next = null;
+    //     return ans.get(n-1);
+
+    // }
+
+    Node reverse(Node head){
+        Node forward = head;
+        Node current = head;
+        Node pre =null;
+
+        while(current==null){
+            forward = current.next;
+            current.next = pre;
+            pre = current;
+            current = forward;
+        }
+        return pre;
+    }
+
      void delete(int index) {
         if(index<0 || index>=size){
             System.out.println("invalid index");
@@ -285,16 +317,17 @@ public class all_question_linked_list {
         l4.addAtTail(0);
         l4.addAtTail(1);
         l4.addAtTail(5);
-        l4.display();
+        // l4.display();
        
-        l4.partion_list(l4.head, 3);
-        l4.display();
+        // l4.partion_list(l4.head, 3);
+        // l4.display();
 
         l4.even_odd(l4.head);
         l4.display();
 
+        l4.reverse(l4.head);
+        l4.display();
 
-       
-      
+
     }
 }
