@@ -1,8 +1,7 @@
 package src.linked_list;
 
-import java.util.ArrayList;
+import java.util.*;
 
-import src.methods.return_type;
 
 class Node{
     int val;
@@ -254,6 +253,23 @@ class linkedlist{  // user deffined data structure
     //     return pre;
     // }
 
+    boolean palindrom(Node head){
+        Node temp = head;
+        ArrayList<Integer> arr = new ArrayList<>();
+        while(temp!=null){
+            arr.add(temp.val);
+            temp = temp.next;
+        }
+        int i = 0 , j = arr.size()-1;
+        while(i<=j){
+            int a = arr.get(i) , b = arr.get(j);
+            if(a!=b) return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+
      void delete(int index) {
         if(index<0 || index>=size){
             System.out.println("invalid index");
@@ -339,6 +355,12 @@ public class all_question_linked_list {
         l4.head = l4.reverse(l4.head);
         l4.display();
 
+        linkedlist l5 = new linkedlist();
+        l5.addAtTail(1);
+        l5.addAtTail(2);
+        l5.addAtTail(1);
+       
+       System.out.println(l5.palindrom(l5.head));
 
     }
 }
