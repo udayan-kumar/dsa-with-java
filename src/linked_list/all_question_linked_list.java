@@ -328,6 +328,18 @@ class linkedlist{  // user deffined data structure
         return dummy.next;
     }
 
+    Node merge_k(List<Node>  arr){
+        while(arr.size()>1){
+            Node a = arr.get(arr.size()-1);
+            arr.remove(arr.size()-1);
+            Node b =  arr.get(arr.size()-1);
+            arr.remove(arr.size()-1);
+            Node c = merge(a, b);
+            
+        }
+        return arr.get(0);
+    }
+
 
      void delete(int index) {
         if(index<0 || index>=size){
@@ -426,5 +438,9 @@ public class all_question_linked_list {
 
        l4.swap_in_pair(l4.head);
         l4.display();
+
+        
+    //    l4.merge_k([{1->2->3->4->5->5->6->7->8}]);
+        
     }
 }
