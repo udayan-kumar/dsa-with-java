@@ -453,6 +453,28 @@ class linkedlist{  // user deffined data structure
         return dummy.next;
     }
 
+    Node swap(Node head , int k){
+        Node slow = head;
+        Node fast = head;
+
+        for(int i = 1; i<=k ; i++){
+            fast = fast.next;
+        }
+        while(fast!=null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        fast = head;
+        for(int i = 1 ;i<=k-1;i++){
+            fast = fast.next;
+        }
+        int temp = fast.val;
+        fast.val = slow.val;
+        slow.val = temp;
+
+        return head;
+    }
+
     Node merge_k(List<Node>  arr){
         while(arr.size()>1){
             Node a = arr.get(arr.size()-1);
@@ -529,14 +551,17 @@ public class all_question_linked_list {
         l4.addAtTail(5);
         l4.display();
 
-        System.out.println(l4.middle(l4.head));
+        // System.out.println(l4.middle(l4.head));
 
-        l4.delete_middle(l4.head);
-        l4.display();
+        // l4.delete_middle(l4.head);
+        // l4.display();
 
-        System.out.println(l4.find_kth_end(l4.head, 2));
+        // // System.out.println(l4.find_kth_end(l4.head, 2));
 
-        l4.delete_kth_end(l4.head , 2);
+        // l4.delete_kth_end(l4.head , 2);
+        // l4.display();
+
+        l4.swap(l4.head, 2);
         l4.display();
        
         // l4.partion_list(l4.head, 3);
