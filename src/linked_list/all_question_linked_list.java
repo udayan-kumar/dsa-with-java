@@ -322,6 +322,22 @@ class linkedlist{  // user deffined data structure
        return slow.val;
     }
 
+    Node delete_kth_end(Node head , int k){
+        Node slow = head;
+        Node fast = head;
+
+        for(int i = 1 ; i<=k ; i++){
+            if(fast == null) return head;
+            fast = fast.next;
+        }
+        while(fast.next!=null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
+
     Node reverse(Node head){
         if(head==null || head.next ==null){
             return head;
@@ -484,6 +500,9 @@ public class all_question_linked_list {
         l4.display();
 
         System.out.println(l4.find_kth_end(l4.head, 2));
+
+        l4.delete_kth_end(l4.head , 2);
+        l4.display();
        
         // l4.partion_list(l4.head, 3);
         // l4.display();
