@@ -63,6 +63,11 @@ class linkedlist{  // user deffined data structure
         size--;
     }
 
+    void delete_value(Node target){   // delete value of the node
+        target.val = target.next.val;
+        target.next = target.next.next;
+    }
+
     int search(int val){  // searching index
         if(head==null) return -1;
         Node temp = head;
