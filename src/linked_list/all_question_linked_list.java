@@ -268,6 +268,17 @@ class linkedlist{  // user deffined data structure
 
     // }
 
+    int middle(Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.val;
+    }
+
     Node reverse(Node head){
         if(head==null || head.next ==null){
             return head;
@@ -423,6 +434,8 @@ public class all_question_linked_list {
         l4.addAtTail(1);
         l4.addAtTail(5);
         l4.display();
+
+        System.out.println(l4.middle(l4.head));
        
         // l4.partion_list(l4.head, 3);
         // l4.display();
