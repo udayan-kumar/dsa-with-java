@@ -48,6 +48,21 @@ class linkedlist{  // user deffined data structure
           size--;
     }
 
+    void delete(int index) {
+        if(index<0 || index>=size){
+            System.out.println("invalid index");
+            return;
+        }
+        if(index==0) deleteAtHead();
+        Node temp = head;
+        for(int i = 0; i<=index-1;i++){
+            temp= temp.next;
+        }
+        temp.next = temp.next.next;
+        if(index == size-1) tail=temp; // delete last index
+        size--;
+    }
+
     int search(int val){  // searching index
         if(head==null) return -1;
         Node temp = head;
@@ -341,20 +356,7 @@ class linkedlist{  // user deffined data structure
     }
 
 
-     void delete(int index) {
-        if(index<0 || index>=size){
-            System.out.println("invalid index");
-            return;
-        }
-        if(index==0) deleteAtHead();
-        Node temp = head;
-        for(int i = 0; i<=index-1;i++){
-            temp= temp.next;
-        }
-        temp.next = temp.next.next;
-        if(index == size-1) tail=temp; // delete last index
-        size--;
-    }
+     
 }
 
 public class all_question_linked_list {
