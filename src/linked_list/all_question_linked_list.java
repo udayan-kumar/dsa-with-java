@@ -292,19 +292,34 @@ class linkedlist{  // user deffined data structure
         return head;
     }
 
+    // int find_kth_end(Node head , int k){
+    //     Node temp = head;
+    //     int length = 0;
+    //     while(temp!=null){
+    //         temp = temp.next;
+    //         length ++;
+    //     }
+    //     temp = head;
+    //     int n = length -k;
+    //     for(int i = 1;i<=n ; i++){
+    //         temp = temp.next;
+    //     }
+    //     return temp.val;
+    // }
+
     int find_kth_end(Node head , int k){
-        Node temp = head;
-        int length = 0;
-        while(temp!=null){
-            temp = temp.next;
-            length ++;
-        }
-        temp = head;
-        int n = length -k;
-        for(int i = 1;i<=n ; i++){
-            temp = temp.next;
-        }
-        return temp.val;
+        Node slow = head;
+        Node fast = head;
+
+       for(int i = 1; i<=k ; i++){
+        if(fast==null) return -1;
+        fast = fast.next;
+       }
+       while(fast!=null ){
+        slow = slow.next;
+        fast = fast.next;
+       }
+       return slow.val;
     }
 
     Node reverse(Node head){
