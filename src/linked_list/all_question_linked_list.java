@@ -501,6 +501,22 @@ class linkedlist{  // user deffined data structure
          return false;
     }
 
+    int find_first_node_loop(Node head){
+        Node slow = head;
+        Node fast = head;
+        Node a = head;
+
+        while(slow == fast){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        while(a==slow){
+            a = a.next;
+            slow = slow.next;
+        }
+        return a.val;
+    }
+
 
      
 }
