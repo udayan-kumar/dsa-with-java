@@ -517,6 +517,23 @@ class linkedlist{  // user deffined data structure
         return a.val;
     }
 
+    Node remove_dublicate(Node head){
+        Node i = head;
+        Node j = head;
+        while(j!=null){
+            if(i.val==j.val){
+                j = j.next;
+            }
+            else{
+                i.next = j;
+                i = j;
+               j = j.next;
+            }
+        }
+        // i.next = j;
+        return head;
+    }
+
 
      
 }
@@ -579,7 +596,7 @@ public class all_question_linked_list {
         l4.addAtTail(0);
         l4.addAtTail(1);
         l4.addAtTail(5);
-        l4.display();
+        // l4.display();
 
         // System.out.println(l4.middle(l4.head));
 
@@ -591,8 +608,8 @@ public class all_question_linked_list {
         // l4.delete_kth_end(l4.head , 2);
         // l4.display();
 
-        l4.swap(l4.head, 2);
-        l4.display();
+        // l4.swap(l4.head, 2);
+        // l4.display();
        
         // l4.partion_list(l4.head, 3);
         // l4.display();
@@ -618,6 +635,17 @@ public class all_question_linked_list {
 
         
     //    l4.merge_k([{1->2->3->4->5->5->6->7->8}]);
+
+        linkedlist l6 = new linkedlist();
+        l6.addAtTail(2);
+        l6.addAtTail(2);
+        l6.addAtTail(4);
+        l6.addAtTail(5);
+        l6.display();
+
+        l6.remove_dublicate(l6.head);
+        l6.display();
+
         
     }
 }
