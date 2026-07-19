@@ -534,6 +534,29 @@ class linkedlist{  // user deffined data structure
         return head;
     }
 
+    Node remove_dublicate_2(Node head){
+        Node dummy = new Node(-1);
+        Node i = head;
+        Node t = dummy;
+
+        while(i!=null){
+            if(i.next==null || i.val != i.next.val){
+                t.next = i;
+                t = i;
+                i = i.next;
+            }
+            else {
+                Node j = i.next;
+                while(j!=null && j.val==i.val){
+                    j = j.next;
+                }
+                i = j;
+            }
+        }
+        t.next = i;
+        return dummy.next;
+    }
+
 
      
 }
@@ -643,7 +666,10 @@ public class all_question_linked_list {
         l6.addAtTail(5);
         l6.display();
 
-        l6.remove_dublicate(l6.head);
+        // l6.remove_dublicate(l6.head);
+        // l6.display();
+
+        l6.head = l6.remove_dublicate_2(l6.head);
         l6.display();
 
         
