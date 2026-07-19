@@ -292,6 +292,21 @@ class linkedlist{  // user deffined data structure
         return head;
     }
 
+    int find_kth_end(Node head , int k){
+        Node temp = head;
+        int length = 0;
+        while(temp!=null){
+            temp = temp.next;
+            length ++;
+        }
+        temp = head;
+        int n = length -k;
+        for(int i = 1;i<=n ; i++){
+            temp = temp.next;
+        }
+        return temp.val;
+    }
+
     Node reverse(Node head){
         if(head==null || head.next ==null){
             return head;
@@ -452,6 +467,8 @@ public class all_question_linked_list {
 
         l4.delete_middle(l4.head);
         l4.display();
+
+        System.out.println(l4.find_kth_end(l4.head, 2));
        
         // l4.partion_list(l4.head, 3);
         // l4.display();
