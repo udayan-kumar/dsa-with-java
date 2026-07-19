@@ -279,6 +279,19 @@ class linkedlist{  // user deffined data structure
         return slow.val;
     }
 
+    Node delete_middle(Node head){
+        if(head==null && head.next==null) return head;
+        Node slow = head;
+        Node fast = head;
+
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
+
     Node reverse(Node head){
         if(head==null || head.next ==null){
             return head;
@@ -436,6 +449,9 @@ public class all_question_linked_list {
         l4.display();
 
         System.out.println(l4.middle(l4.head));
+
+        l4.delete_middle(l4.head);
+        l4.display();
        
         // l4.partion_list(l4.head, 3);
         // l4.display();
@@ -457,7 +473,7 @@ public class all_question_linked_list {
         // l4.display();
 
        l4.swap_in_pair(l4.head);
-        l4.display();
+        // l4.display();
 
         
     //    l4.merge_k([{1->2->3->4->5->5->6->7->8}]);
