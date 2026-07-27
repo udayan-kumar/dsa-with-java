@@ -210,6 +210,38 @@ class linkedlist{  // user deffined data structure
 
     }
 
+    Node partion_around_linked_list(Node head , int x){
+        Node t = head;
+        Node d1 = new Node(-1);
+        Node d2 = new Node(-1);
+        Node d3 = new Node(-1);
+        Node t1 = d1;
+        Node t2 = d2;
+        Node t3 = d3;
+
+        while(t!=null){
+            if(t.val<x){
+                t1.next = t;
+                t1 = t1.next;
+            }
+            else if(t.val==x){
+                t2.next = t;
+                t2 = t2.next;
+            }
+            else{
+                if(t.val>x){
+                    t3.next = t;
+                    t3 = t3.next;
+                }
+            }
+            t = t.next;
+        }
+        t1.next = d2.next;
+        t2.next = d3.next;
+        t3.next = null;
+        return d1.next;
+    }
+
     Node even_odd(Node head){
         Node d1 = new Node(-1);
         Node d2 = new Node(-1);
@@ -648,10 +680,10 @@ public class all_question_linked_list {
         l4.addAtTail(0);
         l4.addAtTail(1);
         l4.addAtTail(5);
-        l4.display();
+        // l4.display();
 
         l4.head = l4.rotate(l4.head, 3);
-        l4.display();
+        // l4.display();
 
         // System.out.println(l4.middle(l4.head));
 
@@ -703,6 +735,19 @@ public class all_question_linked_list {
 
         // l6.head = l6.remove_dublicate_2(l6.head);
         // l6.display();
+
+        linkedlist l7 = new linkedlist();
+        l7.addAtTail(1);
+        l7.addAtTail(4);
+        l7.addAtTail(3);
+        l7.addAtTail(2);
+        l7.addAtTail(5);
+        l7.addAtTail(2);
+        l7.addAtTail(3);
+        l7.display();
+
+        l7.partion_around_linked_list(l7.head, 3);
+        l7.display();
 
         
     }
