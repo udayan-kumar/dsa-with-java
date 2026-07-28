@@ -828,6 +828,27 @@ class linkedlist{  // user deffined data structure
 
         return new Pair<>(head , b);
     }
+
+    void reverse_circular_linked_list(Node head){
+        Node temp = head;
+
+        while(temp.next!=head){
+            temp = temp.next;
+        }
+        temp.next = null;
+
+        Node current = head;
+        Node forward = null;
+        Node pre = null;
+
+        while(current!=null){
+            forward = current.next;
+            current.next = pre;
+            pre = current;
+            current = forward;
+        }
+        head.next = temp;
+    }
 }
 
 public class all_question_linked_list {
