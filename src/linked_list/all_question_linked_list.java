@@ -785,6 +785,16 @@ class linkedlist{  // user deffined data structure
             temp = temp.next;
         }
     }
+
+    Node singly_to_circular_linked_list(Node head){
+        Node temp = head;
+
+        while(temp.next!=null){
+            temp = temp.next;
+        }
+        temp.next = head;
+        return head;
+    }
 }
 
 public class all_question_linked_list {
