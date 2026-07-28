@@ -776,6 +776,8 @@ class linkedlist{  // user deffined data structure
 
     }
 
+//! CIRCULAR LINKED LIST -->
+
     void circular_linked_list_traversal(Node head){
         System.out.println(head.val);
         Node temp = head.next;
@@ -794,6 +796,37 @@ class linkedlist{  // user deffined data structure
         }
         temp.next = head;
         return head;
+    }
+
+    class Pair<u , v>{
+        u first;
+        v second;
+
+        Pair(u first , v second){
+            this.first = first;
+            this.second = second;
+        }
+    }
+
+    public Pair<Node , Node> split_into_2halves(Node head){
+        Node temp = head;
+
+        while(temp.next!=head){
+            temp = temp.next;
+        } 
+        temp.next = null;
+        Node slow = head;
+        Node fast = head;
+
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node b = slow.next;
+        slow.next = head;
+        temp.next= b;
+
+        return new Pair<>(head , b);
     }
 }
 
