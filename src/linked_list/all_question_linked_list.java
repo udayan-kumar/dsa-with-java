@@ -829,7 +829,7 @@ class linkedlist{  // user deffined data structure
         return new Pair<>(head , b);
     }
 
-    void reverse_circular_linked_list(Node head){
+    Node reverse_circular_linked_list(Node head){
         Node temp = head;
 
         while(temp.next!=head){
@@ -848,6 +848,33 @@ class linkedlist{  // user deffined data structure
             current = forward;
         }
         head.next = temp;
+        return temp;
+    }
+
+    Node delete_circular_linked_list(Node head , int k){
+        Node temp = head;
+
+        while(temp.next!=head){
+            temp = temp.next;
+        }
+        temp.next = null;
+
+        Node t = head.next;
+
+        if(head.val==k){
+            head = head.next;
+            temp.next = head;
+        }
+
+        while(t!=null){
+            if(t.next.val==k){
+                t.next = t.next.next;
+            }
+            t = t.next;
+        }
+        temp.next = head;
+        return head;
+
     }
 }
 
