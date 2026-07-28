@@ -430,27 +430,62 @@ class linkedlist{  // user deffined data structure
     //     return pre;
     // }
 
+    // Node reverse_between(int a , int b , Node head){
+    //     ArrayList <Node> arr = new ArrayList<>();
+    //     Node temp = head;
+    //     while(temp!=null){
+    //         arr.add(temp);
+    //         temp = temp.next;
+    //     }
+    //     int i = a-1, j = b-1;
+    //     while(i<j){
+    //         Node t1 = arr.get(i);
+    //         Node t2 = arr.get(j);
+    //         arr.set(i, t2);
+    //         arr.set(j, t1);
+    //         i++;
+    //         j--;
+    //     }
+
+    //     for(int k = 0 ; k<arr.size();k++){
+    //         arr.get(k).next = (k==arr.size()-1) ? null : arr.get(k+1);
+    //     }
+    //     return arr.get(0);
+    // }
+
     Node reverse_between(int a , int b , Node head){
-        ArrayList <Node> arr = new ArrayList<>();
-        Node temp = head;
-        while(temp!=null){
-            arr.add(temp);
+        Node dummy = new Node(-1);
+        dummy.next = head;
+        Node temp = dummy;
+
+        for(int i = 0; i<a-1;i++){
             temp = temp.next;
         }
-        int i = a-1, j = b-1;
-        while(i<j){
-            Node t1 = arr.get(i);
-            Node t2 = arr.get(j);
-            arr.set(i, t2);
-            arr.set(j, t1);
-            i++;
-            j--;
-        }
+        Node tail1 = temp;
+        Node head2 = temp.next;
+        temp = dummy;
 
-        for(int k = 0 ; k<arr.size();k++){
-            arr.get(k).next = (k==arr.size()-1) ? null : arr.get(k+1);
+        for(int i =0 ; i<b ;i++){
+            temp = temp.next;
         }
-        return arr.get(0);
+        Node tail2 = temp;
+        Node head3 = temp.next;
+        tail1.next = null;
+        tail2.next = null;
+
+        Node current = head2;
+        Node forward = head2;
+        Node pre = null;
+
+        while(current!=null){
+            forward = current.next;
+            current.next = pre;
+            pre = current;
+            current = forward;
+        }
+        tail1.next = tail2;
+        head2.next = head3;
+        return dummy.next;
     }
 
     // boolean palindrom(Node head){
