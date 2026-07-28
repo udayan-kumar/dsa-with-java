@@ -775,6 +775,16 @@ class linkedlist{  // user deffined data structure
         return pre2;
 
     }
+
+    void circular_linked_list_traversal(Node head){
+        System.out.println(head.val);
+        Node temp = head.next;
+
+        while(temp!=head){
+            System.out.println(temp.val);
+            temp = temp.next;
+        }
+    }
 }
 
 public class all_question_linked_list {
