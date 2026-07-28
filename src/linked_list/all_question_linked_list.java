@@ -430,6 +430,29 @@ class linkedlist{  // user deffined data structure
     //     return pre;
     // }
 
+    Node reverse_between(int a , int b , Node head){
+        ArrayList <Node> arr = new ArrayList<>();
+        Node temp = head;
+        while(temp!=null){
+            arr.add(temp);
+            temp = temp.next;
+        }
+        int i = a-1, j = b-1;
+        while(i<j){
+            Node t1 = arr.get(i);
+            Node t2 = arr.get(j);
+            arr.set(i, t2);
+            arr.set(j, t1);
+            i++;
+            j--;
+        }
+
+        for(int k = 0 ; k<arr.size();k++){
+            arr.get(k).next = (k==arr.size()-1) ? null : arr.get(k+1);
+        }
+        return arr.get(0);
+    }
+
     // boolean palindrom(Node head){
     //     Node temp = head;
     //     ArrayList<Integer> arr = new ArrayList<>();
@@ -621,6 +644,7 @@ class linkedlist{  // user deffined data structure
     Node reorder_list(Node head){
         Node slow = head;
         Node fast = head;
+
         while(fast.next!=null && fast.next.next!=null){
             slow = slow.next;
             fast = fast.next.next;
@@ -640,7 +664,6 @@ class linkedlist{  // user deffined data structure
         }
         b = pre;
 
-        
         Node dummy = a;
         while(a!=null && b!=null){
            Node nextA = a.next;
@@ -653,7 +676,6 @@ class linkedlist{  // user deffined data structure
            b = nextB;
         }
         return dummy;
-
 
     }
 
@@ -797,8 +819,12 @@ public class all_question_linked_list {
         l8.addAtTail(7);
         l8.display();
 
-        l8.reorder_list(l8.head);
-        l8.display();
+        // l8.reorder_list(l8.head);
+        // l8.display();
+
+        l8.reverse_between(2, 5, l8.head);
+        l8.display(); 
+
 
         
     }
