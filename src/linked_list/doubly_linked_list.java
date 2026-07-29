@@ -37,6 +37,19 @@ class dll{
         size++;
     }
 
+    void add_at_index(int value , int index){
+        ListNode temp = head;
+        ListNode t1 = new ListNode(value);
+        for(int i = 0; i<index-1 ; i++){
+            temp = temp.next;
+        }
+        t1.next = temp.next;
+        temp.next.prev = t1;
+        temp.next = t1;
+        t1.prev = temp;
+        size++;
+    }
+
     void delete_at_head(){
         if(size==0){
             System.out.println("linked list is empty");
@@ -60,6 +73,16 @@ class dll{
        
     }
 
+    void delete_at_index(int index){
+        ListNode temp = head;
+        for(int i = 0; i<index; i++){
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        temp.next.next.prev = temp;
+        size--;
+    }
+
     void display(){
         ListNode temp = head;
         while(temp!=null){
@@ -77,6 +100,8 @@ class dll{
         }
         System.out.println();
     }
+
+    
 }
 public class doubly_linked_list {
     public static void main(String[] args) {
@@ -94,9 +119,13 @@ public class doubly_linked_list {
         l1.add_at_tail(50);
         l1.display();
         // l1.diplay_reverse();
-        l1.delete_at_head();
-        l1.display();
-        l1.delete_at_tail();
+        // l1.delete_at_head();
+        // l1.display();
+        // l1.delete_at_tail();
+        // l1.display();
+        // l1.delete_at_index(3);
+        // l1.display();
+        l1.add_at_index(100,3);
         l1.display();
     }
 }
