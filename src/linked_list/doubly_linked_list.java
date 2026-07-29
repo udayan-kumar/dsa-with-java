@@ -41,9 +41,20 @@ class dll{
         if(head==null){
             System.out.println("linked list is empty");
         }
-        ListNode temp = head.next;
+        if(size==1) head = tail = null;
         head = head.next;
-        temp.prev = null;
+        head.prev = null;
+        size--;
+        return head;
+    }
+
+    ListNode delete_at_tail(ListNode head){
+        if(tail==null){
+            System.out.println("linked list is empty");
+        }
+        if(size==1) head = tail = null;
+        tail = tail.prev;
+        tail.next = null;
         size--;
         return head;
     }
