@@ -67,6 +67,15 @@ class dll{
         }
         System.out.println();
     }
+
+    void diplay_reverse(){
+        ListNode temp = tail;
+        while(temp!=null){
+            System.out.print(temp.val + " ");
+            temp = temp.prev;
+        }
+        System.out.println();
+    }
 }
 public class doubly_linked_list {
     public static void main(String[] args) {
