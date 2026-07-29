@@ -7,6 +7,7 @@ class ListNode{
     ListNode next;
     ListNode prev;
     ListNode child;
+    ListNode random;
     
     ListNode(int val){
         this.val = val;
@@ -258,6 +259,84 @@ class dll{
         ans[0] = mindistance;
         ans[1] = maxdistance;
         return ans;
+    }
+
+
+
+    
+
+    ListNode clone_list_next_random(ListNode head1){
+        // step1 --> creating deep copy
+        ListNode head2 = deepcopy(head1);
+
+        // step2 --> alternating connecting lists
+        merge(head1,head2);
+
+        // step3 --> assigning random connection
+        random_connection(head1,head2);
+
+        // step4 --> seperate out list
+        seperate(head1);
+        return head2;
+    }
+    ListNode deepcopy(ListNode head1){
+        ListNode temp1 = head1;
+        ListNode dummy = new ListNode(-1);
+        ListNode temp2 = dummy;
+
+        while(temp1!=null){
+            ListNode t = new ListNode(temp1.val);
+            temp2.next  = t;
+            temp2 = temp2.next;
+            temp1 = temp1.next;
+        }
+        return temp2.next;
+    }
+    void merge(ListNode head1, ListNode head2){
+        ListNode dummy = new ListNode(-1);
+        ListNode temp = dummy;
+        ListNode temp1 = head1;
+        ListNode temp2 = head2;
+        while(temp2!=null){
+            temp.next = temp1;
+            temp1 = temp1.next;
+            temp = temp.next;
+
+            temp.next = temp2;
+            temp2 = temp2.next;
+            temp = temp.next;
+        }
+    }
+    void random_connection(ListNode head1 , ListNode head2){
+        ListNode temp1 = head1;
+        ListNode temp2 = head2;
+        while(temp1!=null && temp2!=null){
+            if(temp1.random==null){
+                temp2.random = null;
+            }
+            else temp2.random = temp1.random.next;
+            temp1 = temp1.next.next;
+            if(temp2.next!=null)
+                temp2 = temp2.next.next;
+        }
+    }
+    void seperate(ListNode head1){
+        ListNode dummy1 = new ListNode(-1);
+        ListNode temp1 = dummy1;
+        ListNode dummy2  = new ListNode(-1);
+        ListNode temp2 = dummy2;
+        ListNode temp = head1;
+
+        while(temp!=null){
+            temp1.next = temp;
+            temp = temp.next;
+            temp1 = temp1.next;
+
+            temp2.next = temp;
+            temp = temp.next;
+            temp2 = temp2.next;
+        }
+        temp1.next = null;
     }
 
     
