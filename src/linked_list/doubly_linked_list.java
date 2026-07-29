@@ -86,12 +86,25 @@ class dll{
     }
 
     void delete_at_index(int index){
+        if(index<0 || index>size){
+            System.out.println("invalid index");
+            return;
+        }
+        if(index==0){
+            delete_at_head();
+            return;
+        }
+        if(index==size){
+            delete_at_tail();
+            return;
+        }
         ListNode temp = head;
         for(int i = 0; i<index-1; i++){
             temp = temp.next;
         }
-        temp.next = temp.next.next;
-        temp.next.next.prev = temp;
+        ListNode deletenode = temp.next;
+        temp.next = deletenode.next;
+        deletenode.next.prev = temp;
         size--;
     }
 
