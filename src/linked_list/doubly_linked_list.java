@@ -179,23 +179,41 @@ class dll{
         return a;
     }
 
+    ListNode delete_dublicate(ListNode heaNode){
+        ListNode i = head;
+        ListNode j = head;
+        ListNode dummy = new ListNode(-1);
+        ListNode t = dummy;
+
+        while(j.next!=null){
+            t.next = i;
+            t = i;
+            j = j.next;
+            if(i.val != j.val){
+                i = j;
+                i.prev = t;
+            }
+        }
+        return dummy.next;
+    }
+
     
 }
 public class doubly_linked_list {
     public static void main(String[] args) {
-        dll l1 = new dll();
+        // dll l1 = new dll();
         // l1.add_at_head(10);
         // l1.add_at_head(20);
         // l1.add_at_head(30);
         // l1.add_at_head(40);
         // l1.add_at_head(50);
 
-        l1.add_at_tail(10);
-        l1.add_at_tail(20);
-        l1.add_at_tail(30);
-        l1.add_at_tail(40);
-        l1.add_at_tail(50);
-        l1.display();
+        // l1.add_at_tail(10);
+        // l1.add_at_tail(20);
+        // l1.add_at_tail(30);
+        // l1.add_at_tail(40);
+        // l1.add_at_tail(50);
+        // l1.display();
         // l1.diplay_reverse();
 
         // l1.delete_at_head();
@@ -215,8 +233,22 @@ public class doubly_linked_list {
         // l1.display();
         // l1.diplay_reverse();
 
-        l1.rotate(l1.head, 3);
-        l1.display();
+        // l1.rotate(l1.head, 3);
+        // l1.display();
+
+        dll l2 = new dll();
+        l2.add_at_tail(1);
+        l2.add_at_tail(1);
+        l2.add_at_tail(2);
+        l2.add_at_tail(2);
+        l2.add_at_tail(3);
+        l2.add_at_tail(4);
+        l2.display();
+
+        l2.delete_dublicate(l2.head);
+        l2.display();
+        l2.diplay_reverse();
+        
         
         
     }
