@@ -36,6 +36,17 @@ class dll{
         }
         size++;
     }
+
+    ListNode delete_at_head(ListNode head){
+        if(head==null){
+            System.out.println("linked list is empty");
+        }
+        ListNode temp = head.next;
+        head = head.next;
+        temp.prev = null;
+        size--;
+        return head;
+    }
 }
 public class doubly_linked_list {
     public static void main(String[] args) {
