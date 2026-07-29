@@ -58,6 +58,15 @@ class dll{
         size--;
         return head;
     }
+
+    void display(){
+        ListNode temp = head;
+        while(temp!=null){
+            System.out.print(temp.val + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
 }
 public class doubly_linked_list {
     public static void main(String[] args) {
