@@ -3,6 +3,7 @@ class ListNode{
     int val;
     ListNode next;
     ListNode prev;
+    ListNode child;
     
     ListNode(int val){
         this.val = val;
@@ -197,23 +198,48 @@ class dll{
         return dummy.next;
     }
 
+    ListNode flatten(ListNode head){
+        if(head == null) return head;
+        ListNode current = head;
+        while(current!=null){
+            if(current.child==null) current = current.next;
+            else{
+                ListNode forward = current.next;
+                ListNode c = flatten(current.child);
+                current.child = null;
+                current.next = c;
+                c.prev = current;
+                ListNode temp = c;
+                while(temp.next!=null){
+                    temp = temp.next;
+                }
+                temp.next = forward;
+                if(forward!=null)
+                    forward.prev = temp;
+                current = forward;
+            }
+        }
+        return head;
+
+    }
+
     
 }
 public class doubly_linked_list {
     public static void main(String[] args) {
-        // dll l1 = new dll();
+        dll l1 = new dll();
         // l1.add_at_head(10);
         // l1.add_at_head(20);
         // l1.add_at_head(30);
         // l1.add_at_head(40);
         // l1.add_at_head(50);
 
-        // l1.add_at_tail(10);
-        // l1.add_at_tail(20);
-        // l1.add_at_tail(30);
-        // l1.add_at_tail(40);
-        // l1.add_at_tail(50);
-        // l1.display();
+        l1.add_at_tail(10);
+        l1.add_at_tail(20);
+        l1.add_at_tail(30);
+        l1.add_at_tail(40);
+        l1.add_at_tail(50);
+        l1.display();
         // l1.diplay_reverse();
 
         // l1.delete_at_head();
@@ -245,9 +271,9 @@ public class doubly_linked_list {
         l2.add_at_tail(4);
         l2.display();
 
-        l2.delete_dublicate(l2.head);
-        l2.display();
-        l2.diplay_reverse();
+        // l2.delete_dublicate(l2.head);
+        // l2.display();
+        // l2.diplay_reverse();
         
         
         
