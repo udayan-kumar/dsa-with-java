@@ -1,4 +1,7 @@
 package src.linked_list;
+
+import src.basics_baatein.first;
+
 class ListNode{
     int val;
     ListNode next;
@@ -223,6 +226,40 @@ class dll{
 
     }
 
+    int[] num_node_min_max(ListNode head){
+        int[] ans = {-1,-1};
+        ListNode a = head;
+        ListNode b = a.next;
+        ListNode c = b.next;
+        int index = 1;
+        int firstindex = -1;
+        int lastindex = -1;
+        int mindistance = -1;
+
+        if(c==null) return ans;
+
+        while(c!=null){
+            if((b.val>a.val && b.val>c.val) || (b.val<a.val && b.val<c.val)){
+                if(firstindex == -1) firstindex = index;
+                if(lastindex!=-1){
+                    int distance = index - lastindex;
+                    mindistance = Math.min(distance, mindistance);
+                }
+                lastindex = index;
+            }
+            index++;
+            a = a.next;
+            b = b.next;
+            c = c.next;
+        }
+        int maxdistance = lastindex - firstindex;
+        if(maxdistance==0) maxdistance = -1;
+        if(mindistance==-1) mindistance = -1;
+        ans[0] = mindistance;
+        ans[1] = maxdistance;
+        return ans;
+    }
+
     
 }
 public class doubly_linked_list {
@@ -269,11 +306,25 @@ public class doubly_linked_list {
         l2.add_at_tail(2);
         l2.add_at_tail(3);
         l2.add_at_tail(4);
-        l2.display();
+        // l2.display();
 
         // l2.delete_dublicate(l2.head);
         // l2.display();
         // l2.diplay_reverse();
+
+        dll l3 = new dll();
+        l3.add_at_tail(5);
+        l3.add_at_tail(3);
+        l3.add_at_tail(1);
+        l3.add_at_tail(2);
+        l3.add_at_tail(5);
+        l3.add_at_tail(1);
+        l3.add_at_tail(2);
+        l3.display();
+
+        
+        System.out.println(l3.num_node_min_max(l3.head));
+        
         
         
         
