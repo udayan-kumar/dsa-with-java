@@ -124,6 +124,22 @@ class dll{
             temp = temp.prev;
         }
         System.out.println();
+        
+    }
+
+    ListNode reverse_linked_list(ListNode head){
+        ListNode current = head;
+        ListNode forward = null;
+        ListNode pre = null;
+
+        while(current!=null){
+            forward = current.next;
+            current.next = pre;
+            current.prev = forward;
+            pre = current;
+            current = forward;
+        }
+        return pre;
     }
 
     
@@ -144,14 +160,24 @@ public class doubly_linked_list {
         l1.add_at_tail(50);
         l1.display();
         // l1.diplay_reverse();
+
         // l1.delete_at_head();
         // l1.display();
+
         // l1.delete_at_tail();
         // l1.display();
-        l1.delete_at_index(3);
-        l1.display();
+
+        // l1.delete_at_index(3);
+        // l1.display();
+
         // l1.add_at_index(100,3);
         // l1.display();
         // l1.diplay_reverse();
+
+        l1.head = l1.reverse_linked_list(l1.head);
+        l1.display();
+        l1.diplay_reverse();
+        
+        
     }
 }
