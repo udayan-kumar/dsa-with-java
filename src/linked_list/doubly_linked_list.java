@@ -109,6 +109,7 @@ class dll{
     }
 
     void display(){
+        if(head==null) return;
         ListNode temp = head;
         while(temp!=null){
             System.out.print(temp.val + " ");
@@ -128,18 +129,54 @@ class dll{
     }
 
     ListNode reverse_linked_list(ListNode head){
-        ListNode current = head;
-        ListNode forward = null;
-        ListNode pre = null;
+        // ListNode current = head;
+        // ListNode forward = null;
+        // ListNode pre = null;
 
+        // while(current!=null){
+        //     forward = current.next;
+        //     current.next = pre;
+        //     current.prev = forward;
+        //     pre = current;
+        //     current = forward;
+        // }
+        // return pre;
+
+        ListNode temp = null;
+        ListNode current = head;
         while(current!=null){
-            forward = current.next;
-            current.next = pre;
-            current.prev = forward;
-            pre = current;
-            current = forward;
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
         }
-        return pre;
+        return temp.prev;
+    }
+
+    ListNode rotate(ListNode head , int k){
+        ListNode slow = head;
+        ListNode fast = head;
+
+        for(int i =0; i<k; i++){
+            fast = fast.next;
+        }
+
+        while(fast.next!=null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        ListNode a = slow.next;
+        slow.next = null;
+        // ListNode temp = a;
+        fast.next = head;
+
+        // while(temp.next!=null){
+        //     temp = temp.next;
+        // }
+        // temp.next = head;
+        // head.prev = temp;
+
+        return a;
     }
 
     
@@ -174,9 +211,12 @@ public class doubly_linked_list {
         // l1.display();
         // l1.diplay_reverse();
 
-        l1.head = l1.reverse_linked_list(l1.head);
+        // l1.head = l1.reverse_linked_list(l1.head);
+        // l1.display();
+        // l1.diplay_reverse();
+
+        l1.rotate(l1.head, 3);
         l1.display();
-        l1.diplay_reverse();
         
         
     }
