@@ -12,18 +12,16 @@ class my_stack{
     Node head;
     int length;
 
-    int peek(){
+    int peek()throws Exception{
         if(head==null){
-            System.out.println("stack is empty");
-            return -1;
+            throw new Exception("stack underflow error");
         }
         return head.val;
     }
 
-    int pop(){ // delete at head
+    int pop() throws Exception{ // delete at head
         if(head==null){
-            System.out.println("stack is empty");
-            return -1;
+            throw new Exception("stack underflow error");
         }
         int x = head.val;
         head = head.next;
@@ -59,9 +57,11 @@ class my_stack{
 
 }
 public class ll_implementation_stack {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         my_stack st1 = new my_stack();
 
+        //st1.pop();
+        
         st1.push(10);
         st1.push(20);
         st1.push(30);
