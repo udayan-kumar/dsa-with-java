@@ -714,66 +714,85 @@ class linkedlist{  // user deffined data structure
 
     }
 
-    Node add_number_linked_list(Node head1 , Node head2){
-        Node current = head1;
-        Node forward = head1;
-        Node pre = null;
-        int carry = 0;
-        Node dummy = new Node(-1);
-        Node temp = dummy;
+    // Node add_number_linked_list(Node head1 , Node head2){
+    //     Node current = head1;
+    //     Node forward = head1;
+    //     Node pre = null;
+    //     int carry = 0;
+    //     Node dummy = new Node(-1);
+    //     Node temp = dummy;
 
-        while(current!=null){
-            forward = current.next;
-            current.next = pre;
-            pre = current;
-            current = forward;
+    //     while(current!=null){
+    //         forward = current.next;
+    //         current.next = pre;
+    //         pre = current;
+    //         current = forward;
+    //     }
+
+    //     Node current1 = head2;
+    //     Node forward1 = head2;
+    //     Node pre1 = null;
+
+    //     while(current1!=null){
+    //         forward1 = current1.next;
+    //         current1.next = pre1;
+    //         pre1 = current1;
+    //         current1 = forward1;
+    //     }
+
+    //     Node temp1 = pre;
+    //     Node temp2 = pre1;
+
+    //     while(temp1!=null || temp2!=null || carry!=0){
+    //         // int x = (temp1!=null) ? temp1.val : 0;
+    //         // int y = (temp2!=null) ? temp2.val : 0;
+    //         int sum = carry + temp1.val + temp2.val;
+    //         Node adding = new Node(sum);
+    //         if(sum>9) sum = sum%10;
+    //         carry = sum/10;
+    //         temp.next = adding;
+    //         temp = adding;
+    //         if(temp1!=null)
+    //             temp1 = temp1.next;
+    //         if(temp2!=null)
+    //             temp2 = temp2.next;
+    //     }
+    //     // if(carry!=0){
+    //     //     temp.next = new Node(carry);
+    //     // }
+
+    //     dummy = dummy.next;
+    //     Node current2 = dummy;
+    //     Node forward2 = null;
+    //     Node pre2 = null;
+
+    //     while(current2!=null){
+    //         forward2 = current2.next;
+    //         current2.next = pre2;
+    //         pre2 = current2;
+    //         current2 = forward2;
+    //     }
+    //     return pre2;
+
+    // }
+
+    Node remove_greater_Node(Node head){
+        Stack <Node> st = new Stack<>();
+        Node temp = head;
+        while(temp!=null){
+            while(st.size()>0 && st.peek().val<temp.val) st.pop();
+
+            st.push(temp);
+
+            temp = temp.next;
         }
-
-        Node current1 = head2;
-        Node forward1 = head2;
-        Node pre1 = null;
-
-        while(current1!=null){
-            forward1 = current1.next;
-            current1.next = pre1;
-            pre1 = current1;
-            current1 = forward1;
+        
+        while(st.size()>0){
+            Node conn = st.pop();
+            conn.next = temp;
+            temp = conn;
         }
-
-        Node temp1 = pre;
-        Node temp2 = pre1;
-
-        while(temp1!=null || temp2!=null || carry!=0){
-            // int x = (temp1!=null) ? temp1.val : 0;
-            // int y = (temp2!=null) ? temp2.val : 0;
-            int sum = carry + temp1.val + temp2.val;
-            Node adding = new Node(sum);
-            if(sum>9) sum = sum%10;
-            carry = sum/10;
-            temp.next = adding;
-            temp = adding;
-            if(temp1!=null)
-                temp1 = temp1.next;
-            if(temp2!=null)
-                temp2 = temp2.next;
-        }
-        // if(carry!=0){
-        //     temp.next = new Node(carry);
-        // }
-
-        dummy = dummy.next;
-        Node current2 = dummy;
-        Node forward2 = null;
-        Node pre2 = null;
-
-        while(current2!=null){
-            forward2 = current2.next;
-            current2.next = pre2;
-            pre2 = current2;
-            current2 = forward2;
-        }
-        return pre2;
-
+        return temp;
     }
 
 //! CIRCULAR LINKED LIST -->
@@ -1013,7 +1032,7 @@ public class all_question_linked_list {
         l8.addAtTail(5);
         l8.addAtTail(6);
         l8.addAtTail(7);
-        l8.display();
+        //l8.display();
 
         // l8.reorder_list(l8.head);
         // l8.display();
@@ -1021,8 +1040,19 @@ public class all_question_linked_list {
         // l8.reverse_between_index(2, 5, l8.head);
         // l8.display(); 
 
-        l8.add_number_linked_list(l8.head , l8.head);
-        l8.display();
+        //l8.add_number_linked_list(l8.head , l8.head);
+        //l8.display();
+
+        linkedlist l9 = new linkedlist();
+        l9.addAtTail(5);
+        l9.addAtTail(2);
+        l9.addAtTail(13);
+        l9.addAtTail(3);
+        l9.addAtTail(8);
+        l9.display();
+
+        l9.remove_greater_Node(l9.head);
+        l9.display();
 
 
         
