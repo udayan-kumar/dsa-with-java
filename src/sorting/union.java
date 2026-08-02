@@ -12,20 +12,28 @@ public class union {
         int j = 0;
         while(i<n && j<m){
             if(a[i] == b[j]){
-                System.out.print(a[i]);
+                System.out.print(a[i]+ " ");
                 i++;
                 j++;
             }
             else if(a[i] > b[j]){
-                System.out.print(b[j]);
+                System.out.print(b[j]+ " ");
                 j++;
             }
             else if(a[i] < b[j]){
-                System.out.print(a[i]);
+                System.out.print(a[i]+ " ");
 
                 i++;
             }
             
+        }
+        while(i<n){
+            System.out.print(a[i] + " ");
+            i++;
+        }
+        while(j<m){
+            System.out.print(b[j]+ " ");
+            j++;
         }
 
     }
