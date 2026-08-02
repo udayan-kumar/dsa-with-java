@@ -6,8 +6,8 @@ public class basics {
     public static void main(String[] args) {
         Stack<String> st = new Stack<>();
 
-        System.out.println(st.isEmpty());
-        System.out.println(st.size()==0);
+        //System.out.println(st.isEmpty());
+        //System.out.println(st.size()==0);
         // st.pop();  // underflow
         st.push("udayan singh");  // adding
         st.push("mannu");
