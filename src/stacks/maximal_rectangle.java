@@ -45,7 +45,7 @@ public class maximal_rectangle {
 
         int pse[] = new int[n];
         pse[0] = -1;
-        st.push(0);  // yanha par item 0 nhii hoga ,, index 0 hoga,, lekin ye item 0 le raha hai esiliye index out of bound aaraha hai
+        st.push(0);  
 
         for(int i = 1; i<n; i++){
             while(st.size()>0 && heights[st.peek()]>=heights[i]){
