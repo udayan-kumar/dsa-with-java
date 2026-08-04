@@ -19,7 +19,7 @@ public class winner_circular_game {
         q.add(10);
         q.add(11);
 
-        int k = 4;
+        int k = 9;
 
         while(q.size()>1){
             for(int i = 1; i<=k-1; i++){
