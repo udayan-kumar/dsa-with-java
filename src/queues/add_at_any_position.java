@@ -15,18 +15,18 @@ public class add_at_any_position {
         q.add(60);
         q.add(70);
 
-        add(q, 3);
+        add(q, 3,100);
         
         System.out.println(q);
     }
 
-    static void add(Queue <Integer> q, int index){
+    static void add(Queue <Integer> q, int index, int val){
         int n = q.size();
         for(int i = 0; i<index; i++){
             q.add(q.remove());
 
         }
-        q.add(100);
+        q.add(val);
         for(int i = 0; i<n-index; i++){
             q.add(q.remove());
         }
