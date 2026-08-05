@@ -54,7 +54,7 @@ class MyQueue{
         return head.val;
     }
 }
-public class linked_list_implementation {
+public class implementation_via_linkedlist {
     public static void main(String[] args) {
         MyQueue q = new MyQueue();
 
