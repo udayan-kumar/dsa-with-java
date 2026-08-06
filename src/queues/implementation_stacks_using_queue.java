@@ -6,27 +6,41 @@ class myStack{
     Queue <Integer> q = new LinkedList<>();
 
     void push(int val){
-        System.out.println(q.add(val));
-    }
+        //q.add(val);
 
-    int pop(){
+
+        // q ke front pa add karna 
+        q.add(val);   //O(n)
         int n = q.size();
         for(int i = 1; i<=n; i++){
             q.add(q.remove());
         }
+    }
+
+    int pop(){
+        // int n = q.size();
+        // for(int i = 1; i<=n; i++){
+        //     q.add(q.remove());
+        // }
+
+        // return q.remove();
+
 
         return q.remove();
     }
 
     int peek(){
-        int n = q.size();
-        for(int i = 1; i<=n; i++){
-            q.add(q.remove());
-        }
-        int p = q.peek();
-        q.add(q.remove());
+        // int n = q.size();
+        // for(int i = 1; i<=n; i++){
+        //     q.add(q.remove());
+        // }
+        // int p = q.peek();
+        // q.add(q.remove());
 
-        return p;
+        // return p;
+
+
+        return q.peek();
     }
 
     boolean empty(){
