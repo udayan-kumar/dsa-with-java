@@ -11,33 +11,50 @@ class myQueue{
     }
 
     void push(int val){
-        st.push(val);
-    }
+        //st.push(val);   O(1)
 
-    int pop(){
-        // st ka bottom remove karo
-        while(st.size()>1){
+
+        // push at bottom at st   O(n)
+        while(st.size()>0){
             helper.push(st.pop());
         }
-        int front = st.pop();
+        st.push(val);
 
         while(helper.size()>0){
             st.push(helper.pop());
         }
-        return front;
+    }
+
+    int pop(){
+        // st ka bottom remove karo    O(n)
+        // while(st.size()>1){
+        //     helper.push(st.pop());
+        // }
+        // int front = st.pop();
+
+        // while(helper.size()>0){
+        //     st.push(helper.pop());
+        // }
+        // return front;
+
+
+        return st.pop();    // O(1)
     }
 
     int peek(){
         // st ka bottom print karo
-        while(st.size()>1){
-            helper.push(st.pop());
-        }
-        int front = st.peek();
+        // while(st.size()>1){
+        //     helper.push(st.pop());
+        // }
+        // int front = st.peek();
 
-        while(helper.size()>0){
-            st.push(helper.pop());
-        }
-        return front;
+        // while(helper.size()>0){
+        //     st.push(helper.pop());
+        // }
+        // return front;
+
+
+        return st.peek();
     }
 
     boolean empty(){
