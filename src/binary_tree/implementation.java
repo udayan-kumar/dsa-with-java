@@ -28,7 +28,13 @@ public class implementation {
        c.left = f; c.right = g;
        d.left = h; d.right = i;
 
-       display(a);
+       preorder_display(a);
+       System.out.println();
+
+       inorder_display(a);
+       System.out.println();
+
+       postorder_display(a);
        System.out.println();
 
        System.out.println(size(a));
@@ -44,13 +50,23 @@ public class implementation {
        System.out.println(level(a));
     }
 
-    private static void display(Node root){
+    private static void preorder_display(Node root){
         if(root == null) return;
 
         System.out.print(root.val + " ");
-        display(root.left);  // left ki sari value print kar dega
-        display(root.right);  // right ki sari value print kar dega
+        preorder_display(root.left);  // left ki sari value print kar dega
+        preorder_display(root.right);  // right ki sari value print kar dega
     }
+
+    private static void inorder_display(Node root){
+        if(root == null) return;
+
+        inorder_display(root.left);
+        System.out.print(root.val + " ");
+        inorder_display(root.right);
+    }
+
+   
 
     private static int size(Node root){
         if(root == null) return 0;
