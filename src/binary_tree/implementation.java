@@ -36,6 +36,8 @@ public class implementation {
        System.out.println(sum(a));
 
        System.out.println(product(a));
+
+       System.out.println(max(a));
     }
 
     private static void display(Node root){
@@ -68,5 +70,11 @@ public class implementation {
         if(root == null) return 1;
 
         return root.val * product(root.left) * product(root.right);
+    }
+
+    private static int max(Node root){
+        if(root == null) return Integer.MIN_VALUE;
+
+        return Math.max(root.val, Math.max(max(root.left), max(root.right)));
     }
 }
