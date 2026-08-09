@@ -66,7 +66,13 @@ public class implementation {
         inorder_display(root.right);
     }
 
-   
+    private static void postorder_display(Node root){
+        if(root == null) return;
+
+        postorder_display(root.left);
+        postorder_display(root.right);
+        System.out.print(root.val + " ");
+    }
 
     private static int size(Node root){
         if(root == null) return 0;
