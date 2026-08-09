@@ -27,6 +27,9 @@ public class implementation {
        d.left = h; d.right = i;
 
        display(a);
+       System.out.println();
+
+       System.out.println(size(a));
     }
 
     private static void display(Node root){
@@ -35,5 +38,17 @@ public class implementation {
         System.out.print(root.val + " ");
         display(root.left);  // left ki sari value print kar dega
         display(root.right);  // right ki sari value print kar dega
+    }
+
+    private static int size(Node root){
+        if(root == null) return 0;
+
+        //return 1 + size(root.left) + size(root.right);
+
+
+        int leftsize = size(root.left);
+        int rightsize = size(root.right);
+
+        return 1 + leftsize + rightsize;
     }
 }
