@@ -40,6 +40,8 @@ public class implementation {
        System.out.println(max(a));
 
        System.out.println(min(a));
+
+       System.out.println(level(a));
     }
 
     private static void display(Node root){
@@ -84,5 +86,11 @@ public class implementation {
         if(root == null) return Integer.MAX_VALUE;
 
         return Math.min(root.val,Math.min(min(root.left), min(root.right)));
+    }
+
+    private static int level(Node root){
+        if(root == null) return 0;
+
+        return 1 + Math.max(level(root.left), level(root.right));
     }
 }
