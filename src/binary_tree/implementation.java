@@ -38,6 +38,8 @@ public class implementation {
        System.out.println(product(a));
 
        System.out.println(max(a));
+
+       System.out.println(min(a));
     }
 
     private static void display(Node root){
@@ -76,5 +78,11 @@ public class implementation {
         if(root == null) return Integer.MIN_VALUE;
 
         return Math.max(root.val, Math.max(max(root.left), max(root.right)));
+    }
+
+    private static int min(Node root){
+        if(root == null) return Integer.MAX_VALUE;
+
+        return Math.min(root.val,Math.min(min(root.left), min(root.right)));
     }
 }
