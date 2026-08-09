@@ -1,5 +1,7 @@
 package src.binary_tree;
 
+import src.two_D_array.sum;
+
 class Node{
     int val;
     Node left;
@@ -30,6 +32,8 @@ public class implementation {
        System.out.println();
 
        System.out.println(size(a));
+
+       System.out.println(sum(a));
     }
 
     private static void display(Node root){
@@ -50,5 +54,11 @@ public class implementation {
         int rightsize = size(root.right);
 
         return 1 + leftsize + rightsize;
+    }
+
+    private static int sum(Node root){
+        if(root ==  null) return 0;
+
+        return root.val + sum(root.left) + sum(root.right);
     }
 }
