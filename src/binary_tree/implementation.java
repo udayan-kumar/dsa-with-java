@@ -34,6 +34,8 @@ public class implementation {
        System.out.println(size(a));
 
        System.out.println(sum(a));
+
+       System.out.println(product(a));
     }
 
     private static void display(Node root){
@@ -60,5 +62,11 @@ public class implementation {
         if(root ==  null) return 0;
 
         return root.val + sum(root.left) + sum(root.right);
+    }
+
+    private static int product(Node root){
+        if(root == null) return 1;
+
+        return root.val * product(root.left) * product(root.right);
     }
 }
