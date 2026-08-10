@@ -48,6 +48,9 @@ public class implementation {
        System.out.println(min(a));
 
        System.out.println(level(a));
+
+       invert_binary_tree(a);
+       System.out.println();
     }
 
     private static void preorder_display(Node root){
@@ -114,5 +117,23 @@ public class implementation {
         if(root == null) return 0;
 
         return 1 + Math.max(level(root.left), level(root.right));
+    }
+
+    private static void invert_binary_tree(Node root){
+        if(root == null) return;
+
+        invert_binary_tree(root.right);
+        invert_binary_tree(root.left);
+
+        System.out.print(root.val + " ");
+
+        // Node temp = root.left;
+        // root.left = root.right;
+        // root.right = temp;
+
+        // invert_binary_tree(root.left);
+        // invert_binary_tree(root.right);
+        // System.out.print(root.val + " ");
+
     }
 }
