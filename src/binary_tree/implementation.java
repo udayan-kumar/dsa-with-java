@@ -1,10 +1,6 @@
 package src.binary_tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
-import src.oops.private_keyword;
-import src.two_D_array.sum;
+import java.util.*;
 
 class Node{
     int val;
@@ -13,6 +9,15 @@ class Node{
 
     Node(int val){
         this.val = val;
+    }
+}
+
+class Pair{
+    Node node;
+    int level;
+    Pair(Node node, int level){
+        this.node = node;
+        this.level = level;
     }
 }
 public class implementation {
@@ -63,6 +68,10 @@ public class implementation {
        System.out.println(has_path_su(a, 20));
 
        level_order_traversal(a);
+
+       level_order_linewise(a);
+
+       particular_level(a, 0, 2);
     }
 
     private static void preorder_display(Node root){
@@ -186,5 +195,36 @@ public class implementation {
             if(front.right!=null)q.add(front.right);
         }
         System.out.println();
+    }
+
+    private static void level_order_linewise(Node root){
+        Queue <Pair> q = new LinkedList<>();
+        int currentlevel = 0;
+        q.add(new Pair(root, 0));
+
+        while(q.size()>0){
+            Pair front = q.remove();
+            if(front.level!=currentlevel){
+                currentlevel++;
+                System.out.println();  // for changing line
+            }
+            System.out.print(front.node.val + " ");
+            if(front.node.left!=null){
+                q.add(new Pair(front.node.left, front.level+1));
+            }
+
+            if(front.node.right!=null){
+                q.add(new Pair(front.node.right, front.level+1));
+            }
+        }
+        System.out.println();
+    }
+
+    private static void particular_level(Node root, int level, int k){
+        if(root==null) return;
+        if(level==k) System.out.print(root.val + " ");
+
+        particular_level(root.left, level+1, k);
+        particular_level(root.right, level+1, k);
     }
 }
