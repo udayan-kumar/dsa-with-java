@@ -53,6 +53,8 @@ public class implementation {
        System.out.println();
 
        System.out.println(is_identical(a, a));
+
+       System.out.println(is_symmetric(a));
     }
 
     private static void preorder_display(Node root){
@@ -145,5 +147,14 @@ public class implementation {
         if(p.val != q.val) return false;
 
         return is_identical(p.left, q.left) && is_identical(p.right, q.right);
+    }
+
+    private static boolean is_symmetric(Node root){
+        if(root.left.val == root.right.val) return true;
+        if(root.left == null && root.right == null) return true;
+        if(root.left.val != root.right.val) return false;
+
+        return is_symmetric(root.left) && is_symmetric(root.right);
+
     }
 }
