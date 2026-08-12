@@ -51,6 +51,8 @@ public class implementation {
 
        invert_binary_tree(a);
        System.out.println();
+
+       System.out.println(is_identical(a, a));
     }
 
     private static void preorder_display(Node root){
@@ -135,5 +137,13 @@ public class implementation {
         // invert_binary_tree(root.right);
         // System.out.print(root.val + " ");
 
+    }
+
+    private static boolean is_identical(Node p, Node q){
+        if(p==null && q==null) return true;
+        if(p==null || q==null) return false;
+        if(p.val != q.val) return false;
+
+        return is_identical(p.left, q.left) && is_identical(p.right, q.right);
     }
 }
