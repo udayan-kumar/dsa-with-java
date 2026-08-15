@@ -72,6 +72,9 @@ public class implementation {
        level_order_linewise(a);
 
        particular_level(a, 0, 2);
+       System.out.println();
+
+       System.out.println(paths(a));
     }
 
     private static void preorder_display(Node root){
@@ -226,5 +229,27 @@ public class implementation {
 
         particular_level(root.left, level+1, k);
         particular_level(root.right, level+1, k);
+    }
+
+    public static ArrayList<ArrayList<Integer>> paths(Node root){
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        dfs(root, new ArrayList<>(), ans);
+        return ans;
+    }
+
+    private static void dfs(Node root, ArrayList<Integer> arr, ArrayList<ArrayList<Integer>> ans){
+        if(root == null) return;
+        if(root.left==null && root.right==null){
+            arr.add(root.val);
+            ArrayList<Integer> list = new ArrayList<>();
+            list.addAll(arr);
+            ans.add(list);
+            arr.remove(arr.size()-1);
+            return;
+        }
+        arr.add(root.val);
+        dfs(root.left, arr, ans);
+        dfs(root.right, arr, ans);
+        arr.remove(arr.size()-1);
     }
 }
