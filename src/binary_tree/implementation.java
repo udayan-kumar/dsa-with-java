@@ -1,6 +1,10 @@
 package src.binary_tree;
 
+import java.rmi.MarshalException;
 import java.util.*;
+
+import src.if_else.terniary;
+import src.pattern_printing.floyts_traingle;
 
 class Node{
     int val;
@@ -75,6 +79,9 @@ public class implementation {
        System.out.println();
 
        System.out.println(paths(a));
+
+       System.out.println(is_balanced_node(a));
+       
     }
 
     private static void preorder_display(Node root){
@@ -252,4 +259,32 @@ public class implementation {
         dfs(root.right, arr, ans);
         arr.remove(arr.size()-1);
     }
+
+    static boolean flag;
+    public static boolean is_balanced_node(Node root){
+        // if(root == null) return true;
+        // int leftlevels = level(root.left);
+        // int rightlevels = levels(root.right);
+
+        // if(Math.abs(leftlevels-rightlevels)>1) return false;
+
+        // return is_balanced_node(root.left) && is_balanced_node(root.right);
+
+
+        if(root == null) return true;
+        flag = true;
+        levels(root);
+        return flag;
+    }
+
+    private static int levels(Node root){
+        if(root == null) return 0;
+        int leftlevels = level(root.left);
+        int rightlevels = level(root.right);
+
+        if(Math.abs(leftlevels-rightlevels)>1) flag = false;
+
+        return 1 + Math.max(leftlevels, rightlevels);
+    }
+
 }
