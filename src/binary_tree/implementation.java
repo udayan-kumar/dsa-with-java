@@ -1,10 +1,6 @@
 package src.binary_tree;
 
-import java.rmi.MarshalException;
 import java.util.*;
-
-import src.if_else.terniary;
-import src.pattern_printing.floyts_traingle;
 
 class Node{
     int val;
@@ -82,6 +78,7 @@ public class implementation {
 
        System.out.println(is_balanced_node(a));
        
+       System.out.println(diameter(a));
     }
 
     private static void preorder_display(Node root){
@@ -273,11 +270,11 @@ public class implementation {
 
         if(root == null) return true;
         flag = true;
-        levels(root);
+        levels_balanced(root);
         return flag;
     }
 
-    private static int levels(Node root){
+    private static int levels_balanced(Node root){
         if(root == null) return 0;
         int leftlevels = level(root.left);
         int rightlevels = level(root.right);
@@ -285,6 +282,26 @@ public class implementation {
         if(Math.abs(leftlevels-rightlevels)>1) flag = false;
 
         return 1 + Math.max(leftlevels, rightlevels);
+    }
+    
+    static int max;
+    private static int diameter(Node root){
+        //return level(root.left) + level(root.right);
+
+
+        max = 0; 
+        level_diameter(root);
+        return max;
+    }
+
+    private static int level_diameter(Node root){
+        if(root == null) return 0;
+        int leftlevels = level_diameter(root.left);
+        int rightlevels = level_diameter(root.right);
+
+        max = Math.max(max, leftlevels + rightlevels);
+
+        return 1 + Math.max(leftlevels,rightlevels);
     }
 
 }
