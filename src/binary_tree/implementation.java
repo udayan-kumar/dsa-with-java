@@ -1,6 +1,7 @@
 package src.binary_tree;
 
 import java.util.*;
+import java.util.stream.Gatherer.Integrator;
 
 class Node{
     int val;
@@ -79,6 +80,8 @@ public class implementation {
        System.out.println(is_balanced_node(a));
        
        System.out.println(diameter(a));
+
+       System.out.println(right_view(a));
     }
 
     private static void preorder_display(Node root){
@@ -303,5 +306,21 @@ public class implementation {
 
         return 1 + Math.max(leftlevels,rightlevels);
     }
+
+    public static ArrayList<Integer> right_view(Node root){
+        ArrayList<Integer> ans = new ArrayList<>();
+        view(root,0,ans);
+        return ans;
+    }
+
+    private static void view(Node root,int level,ArrayList<Integer> ans){
+        if(root == null) return;
+        if(level>=ans.size()) ans.add(root.val);
+        else ans.set(level, root.val);
+        view(root.left, level+1, ans);
+        view(root.right, level+1, ans);
+    }
+
+    
 
 }
