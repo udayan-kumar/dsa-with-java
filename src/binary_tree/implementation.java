@@ -82,6 +82,8 @@ public class implementation {
        System.out.println(diameter(a));
 
        System.out.println(right_view(a));
+
+       System.out.println(left_view(a));
     }
 
     private static void preorder_display(Node root){
@@ -321,6 +323,18 @@ public class implementation {
         view(root.right, level+1, ans);
     }
 
-    
+    public static ArrayList<Integer> left_view(Node root){
+        ArrayList<Integer> ans = new ArrayList<>();
+        view_left(root,0,ans);
+        return ans;
+    }
+
+    private static void view_left(Node root, int level,ArrayList<Integer> ans){
+        if(root == null) return;
+        if(level>=ans.size()) ans.add(root.val);
+        else ans.set(level, root.val);
+        view_left(root.right,level+1,ans);
+        view_left(root.left,level+1,ans);
+    }
 
 }
