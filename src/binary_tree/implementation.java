@@ -84,6 +84,9 @@ public class implementation {
        System.out.println(right_view(a));
 
        System.out.println(left_view(a));
+
+       Node ans = lowest_common_ancestor(a, 5, 6);
+       System.out.println(ans.val);
     }
 
     private static void preorder_display(Node root){
@@ -337,4 +340,21 @@ public class implementation {
         view_left(root.left,level+1,ans);
     }
 
+    private static Node lowest_common_ancestor(Node root, int p, int q){
+        if(root == null) return null;
+        if(root.val==p || root.val==q) return root;
+        boolean pliesinleft = exist(root.left,p);
+        boolean qliesinleft = exist(root.left,q);
+        if(pliesinleft && qliesinleft) return lowest_common_ancestor(root.left, p, q);
+        else if(!pliesinleft && !qliesinleft) return lowest_common_ancestor(root.right, p, q);
+        else return root;
+    }
+
+    private static boolean exist(Node root, int value){
+        if(root == null) return false;
+        if(root.val==value) return true;
+        return exist(root.left, value) || exist(root.right, value);
+    }
+
 }
+1:30
