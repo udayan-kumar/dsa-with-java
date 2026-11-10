@@ -1,4 +1,3 @@
-package src.strings;
 
 public class builtin_method {
     public static void main(String[] args) {
