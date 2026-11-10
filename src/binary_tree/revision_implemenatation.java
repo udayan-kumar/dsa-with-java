@@ -30,6 +30,8 @@ public class revision_implemenatation {
         System.out.println(size(a));
 
         System.out.println(sum_binarytree(a));
+
+        System.out.println(product_binarytree(a));
     }
 
     private static void display(Node root){
@@ -58,5 +60,11 @@ public class revision_implemenatation {
         if(root == null) return 0;
 
        return root.val + sum_binarytree(root.left) + sum_binarytree(root.right);
+    }
+
+    private static long product_binarytree(Node root){
+        if(root == null) return 1;
+
+        return root.val * product_binarytree(root.left) * product_binarytree(root.right);
     }
 }
