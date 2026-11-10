@@ -134,11 +134,29 @@ public class revision_implemenatation {
         mirror_tree(root.right);
         mirror_tree(root.left);
 
+        //PREORDER MIRROR 
         // Node temp = root.left;
         // root.left = root.right;
         // root.right = temp;
 
         // mirror_tree(root.left);
         // mirror_tree(root.right);
+
+        //POSTORDER MIRROR
+        // mirror_tree(root.left);
+        // mirror_tree(root.right);
+
+        // Node temp = root.left;
+        // root.left = root.right;
+        // root.right = temp;
+
+        //INORDER MIRROR
+        // mirror_tree(root.left);
+
+        // Node temp = root.left;
+        // root.left = root.right;
+        // root.right = temp;
+
+        // mirror_tree(root.left);
     }
 }
