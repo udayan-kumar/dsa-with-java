@@ -116,4 +116,12 @@ public class revision_implemenatation {
         System.out.print(root.val + " ");
         inorder(root.right);
     }
+
+    private static void postorder(Node root){
+        if(root == null) return;
+
+        postorder(root.left);
+        preorder(root.right);
+        System.out.print(root.val + " ");
+    }
 }
