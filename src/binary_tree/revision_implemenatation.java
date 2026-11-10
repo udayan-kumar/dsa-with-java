@@ -25,6 +25,9 @@ public class revision_implemenatation {
         c.left = f; c.right = g;
 
         display(a);
+        System.out.println();
+
+        System.out.println(size(a));
     }
 
     private static void display(Node root){
@@ -34,5 +37,18 @@ public class revision_implemenatation {
 
         display(root.left);
         display(root.right);
+    }
+
+    private static int size(Node root){
+        //if(root == null) return 0;
+
+        //return 1 + size(root.left) + size(root.right);
+
+        //return (root == null) ? 0 : 1 + size(root.left) + size(root.right);
+
+        int leftsize = size(root.left);
+        int rightsize = size(root.right);
+
+        return 1 + leftsize + rightsize;
     }
 }
