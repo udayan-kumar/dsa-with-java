@@ -38,6 +38,9 @@ public class revision_implemenatation {
         System.out.println(min(a));
 
         System.out.println(levels(a));
+
+        preorder(a);
+        System.out.println();
     }
 
     private static void display(Node root){
@@ -90,5 +93,13 @@ public class revision_implemenatation {
         if(root == null) return 0;
 
         return 1 + Math.max(levels(root.left), levels(root.right));
+    }
+
+    private static void preorder(Node root){
+        if(root == null) return;
+
+        System.out.print(root.val + " ");
+        preorder(root.left);
+        preorder(root.right);
     }
 }
