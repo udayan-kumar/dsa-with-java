@@ -47,6 +47,8 @@ public class revision_implemenatation {
 
         postorder(a);
         System.out.println();
+
+        mirror_tree(a);
     }
 
     private static void display(Node root){
@@ -123,5 +125,20 @@ public class revision_implemenatation {
         postorder(root.left);
         preorder(root.right);
         System.out.print(root.val + " ");
+    }
+
+    private static void mirror_tree(Node root){
+        if(root == null) return;
+
+        System.out.print(root.val + " ");
+        mirror_tree(root.right);
+        mirror_tree(root.left);
+
+        // Node temp = root.left;
+        // root.left = root.right;
+        // root.right = temp;
+
+        // mirror_tree(root.left);
+        // mirror_tree(root.right);
     }
 }
