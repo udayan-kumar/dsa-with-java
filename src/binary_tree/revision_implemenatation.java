@@ -41,6 +41,12 @@ public class revision_implemenatation {
 
         preorder(a);
         System.out.println();
+
+        inorder(a);
+        System.out.println();
+
+        postorder(a);
+        System.out.println();
     }
 
     private static void display(Node root){
@@ -101,5 +107,13 @@ public class revision_implemenatation {
         System.out.print(root.val + " ");
         preorder(root.left);
         preorder(root.right);
+    }
+
+    private static void inorder(Node root){
+        if(root == null) return;
+
+        inorder(root.left);
+        System.out.print(root.val + " ");
+        inorder(root.right);
     }
 }
