@@ -36,6 +36,8 @@ public class revision_implemenatation {
         System.out.println(max(a));
 
         System.out.println(min(a));
+
+        System.out.println(levels(a));
     }
 
     private static void display(Node root){
@@ -82,5 +84,11 @@ public class revision_implemenatation {
         if(root == null) return Integer.MAX_VALUE;
 
         return Math.min(root.val, Math.min(min(root.left), min(root.right)));
+    }
+
+    private static int levels(Node root){
+        if(root == null) return 0;
+
+        return 1 + Math.max(levels(root.left), levels(root.right));
     }
 }
