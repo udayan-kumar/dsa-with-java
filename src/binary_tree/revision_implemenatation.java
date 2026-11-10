@@ -54,6 +54,8 @@ public class revision_implemenatation {
         System.out.println(is_identical(a, a));
 
         System.out.println(is_symmetric(a));
+
+        System.out.println(has_path_sum(a, 100));
     }
 
     private static void display(Node root){
@@ -179,5 +181,15 @@ public class revision_implemenatation {
         if(root.left.val != root.right.val) return false;
 
         return is_symmetric(root.left) && is_symmetric(root.right);
+    }
+
+    private static boolean has_path_sum(Node root, int target_sum){
+        if(root == null) return false;
+        if(root.left == null && root.right == null){
+            if(target_sum == root.val) return true;
+            else return false;
+        }
+
+        return has_path_sum(root.left, target_sum-root.val) || has_path_sum(root.right, target_sum-root.val);
     }
 }
