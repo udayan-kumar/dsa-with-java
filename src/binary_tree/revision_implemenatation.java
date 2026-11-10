@@ -32,6 +32,8 @@ public class revision_implemenatation {
         System.out.println(sum_binarytree(a));
 
         System.out.println(product_binarytree(a));
+
+        System.out.println(max(a));
     }
 
     private static void display(Node root){
@@ -66,5 +68,13 @@ public class revision_implemenatation {
         if(root == null) return 1;
 
         return root.val * product_binarytree(root.left) * product_binarytree(root.right);
+    }
+
+    private static int max(Node root){
+        if(root == null) return Integer.MIN_VALUE;
+
+        return Math.max(root.val, Math.max(max(root.left), max(root.right)));
+        
+
     }
 }
