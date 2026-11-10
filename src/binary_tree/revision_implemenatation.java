@@ -49,6 +49,9 @@ public class revision_implemenatation {
         System.out.println();
 
         mirror_tree(a);
+        System.out.println();
+
+        System.out.println(is_identical(a, a));
     }
 
     private static void display(Node root){
@@ -158,5 +161,13 @@ public class revision_implemenatation {
         // root.right = temp;
 
         // mirror_tree(root.left);
+    }
+
+    private static boolean is_identical(Node p, Node q){
+        if(p == null && q == null) return true;
+        if(p == null || q == null) return false;
+        if(p.val != q.val) return false;
+
+        return is_identical(p.left, q.left) && is_identical(p.right, p.right);
     }
 }
