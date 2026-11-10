@@ -28,6 +28,8 @@ public class revision_implemenatation {
         System.out.println();
 
         System.out.println(size(a));
+
+        System.out.println(sum_binarytree(a));
     }
 
     private static void display(Node root){
@@ -40,7 +42,7 @@ public class revision_implemenatation {
     }
 
     private static int size(Node root){
-        //if(root == null) return 0;
+        if(root == null) return 0;
 
         //return 1 + size(root.left) + size(root.right);
 
@@ -50,5 +52,11 @@ public class revision_implemenatation {
         int rightsize = size(root.right);
 
         return 1 + leftsize + rightsize;
+    }
+
+    private static int sum_binarytree(Node root){
+        if(root == null) return 0;
+
+       return root.val + sum_binarytree(root.left) + sum_binarytree(root.right);
     }
 }
