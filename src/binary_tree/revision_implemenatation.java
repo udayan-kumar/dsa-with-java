@@ -73,6 +73,12 @@ public class revision_implemenatation {
         level_order_traverse(a);
 
         level_order_linebise(a);
+
+        kth_level(a, 0, 2);
+        // for(int i = 0; i<levels(a); i++){
+        //     kth_level(a, 0, i);
+        //     System.out.println();
+        // }
     }
 
     private static void display(Node root){
@@ -232,14 +238,24 @@ public class revision_implemenatation {
             Pair front = q.remove();
             Node node = front.node;
             int level = front.level;
+
             if(front.level != curr_level){
                 curr_level++;
                 System.out.println();
             }
+
             System.out.print(front.node.val + " ");
             if(node.left != null) q.add(new Pair(node.left, level+1));
             if(node.right != null) q.add(new Pair(node.right, level+1));
         }
         System.out.println();
+    }
+
+    private static void kth_level(Node root, int level, int k){
+        if(root == null) return;
+
+        if(level == k) System.out.print(root.val + " ");
+        kth_level(root.left, level+1, k);
+        kth_level(root.right, level+1, k);
     }
 }
