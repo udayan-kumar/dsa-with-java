@@ -81,6 +81,8 @@ public class revision_implemenatation {
         System.out.println();
 
         System.out.println(path(a));
+
+        System.out.println(is_balanced(a));
     }
 
     private static void display(Node root){
@@ -278,5 +280,36 @@ public class revision_implemenatation {
         dfs(root.left, arr, ans);
         dfs(root.right, arr, ans);
         arr.remove(arr.size()-1);  // backtracking
+    }
+
+    //!FIRST METHOD TO CHECK BALANCED TREE
+
+    // private static boolean is_balanced(Node root){
+    //     if(root == null) return true;
+    //     int left_levels = levels(root.left);
+    //     int right_levels = levels(root.right);
+    //     if(Math.abs(left_levels - right_levels) > 1) return false;
+
+    //     return is_balanced(root.left) && is_balanced(root.right);
+    // }
+
+    //! SECOND METHOD TO CHECK BALANCED TREE
+
+    static boolean flag;
+    private static boolean is_balanced(Node root){
+        if(root == null) return true;
+        flag = true;
+        levels_balanced(root);
+        return flag;
+    }
+    private static int levels_balanced(Node root){
+        if(root == null) return 0;
+
+        int left_levels = levels_balanced(root.left);
+        int right_levels = levels_balanced(root.right);
+
+        if(Math.abs(left_levels - right_levels) > 1) flag = false;
+
+        return 1 + Math.max(levels_balanced(root.left), levels_balanced(root.right));
     }
 }
