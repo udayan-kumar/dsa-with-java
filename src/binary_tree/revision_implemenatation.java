@@ -13,6 +13,16 @@ class Node{
     }
 }
 
+class Pair{
+    Node node;
+    int level;
+
+    Pair(Node node, int level){
+        this.node = node;
+        this.level = level;
+    }
+}
+
 public class revision_implemenatation {
     public static void main(String[] args) {
         Node a = new Node(10);
@@ -61,6 +71,8 @@ public class revision_implemenatation {
         System.out.println(has_path_sum(a, 100));
 
         level_order_traverse(a);
+
+        level_order_linebise(a);
     }
 
     private static void display(Node root){
@@ -207,6 +219,26 @@ public class revision_implemenatation {
             System.out.print(front.val + " ");
             if(front.left != null) q.add(front.left);
             if(front.right != null) q.add(front.right);
+        }
+        System.out.println();
+    }
+
+    private static void level_order_linebise(Node root){
+        Queue <Pair> q = new LinkedList<>();
+        int curr_level = 0;
+        q.add(new Pair(root, 0));
+
+        while(q.size()>0){
+            Pair front = q.remove();
+            Node node = front.node;
+            int level = front.level;
+            if(front.level != curr_level){
+                curr_level++;
+                System.out.println();
+            }
+            System.out.print(front.node.val + " ");
+            if(node.left != null) q.add(new Pair(node.left, level+1));
+            if(node.right != null) q.add(new Pair(node.right, level+1));
         }
         System.out.println();
     }
