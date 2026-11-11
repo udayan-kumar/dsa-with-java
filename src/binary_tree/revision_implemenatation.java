@@ -83,6 +83,8 @@ public class revision_implemenatation {
         System.out.println(path(a));
 
         System.out.println(is_balanced(a));
+
+        System.out.println(diameter(a));
     }
 
     private static void display(Node root){
@@ -311,5 +313,33 @@ public class revision_implemenatation {
         if(Math.abs(left_levels - right_levels) > 1) flag = false;
 
         return 1 + Math.max(levels_balanced(root.left), levels_balanced(root.right));
+    }
+
+    //! FIRST METHOD TO FIND DIAMETER OF BINARY TREE
+
+    // private static int diameter(Node root){
+    //     if(root == null) return 0;
+
+    //     int a = levels(root.left) + levels(root.right);
+    //     int b = diameter(root.left);
+    //     int c = diameter(root.right);
+    //     return Math.max(a, Math.max(b, c));
+    // }
+
+    //! SECOND METHOD TO FIND DIAMETER OF BINARY TREE
+
+    static int max;
+    private static int diameter(Node root){
+        max = 0;
+        levels_diameter(root);
+        return max;
+    }
+    private static int levels_diameter(Node root){
+        if(root == null) return 0;
+        int left_levels = levels_diameter(root.left);
+        int right_levels = levels_diameter(root.right);
+        max = Math.max(max, left_levels + right_levels);
+
+        return 1 + Math.max(levels_diameter(root.left), levels_diameter(root.right));
     }
 }
