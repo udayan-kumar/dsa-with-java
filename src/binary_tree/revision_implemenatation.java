@@ -1,7 +1,6 @@
 package src.binary_tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 class Node{
     int val;
@@ -79,6 +78,9 @@ public class revision_implemenatation {
         //     kth_level(a, 0, i);
         //     System.out.println();
         // }
+        System.out.println();
+
+        System.out.println(path(a));
     }
 
     private static void display(Node root){
@@ -257,5 +259,24 @@ public class revision_implemenatation {
         if(level == k) System.out.print(root.val + " ");
         kth_level(root.left, level+1, k);
         kth_level(root.right, level+1, k);
+    }
+
+    private static ArrayList<ArrayList<Integer>>path(Node root){
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        ArrayList<Integer> arr = new ArrayList<>();
+        dfs(root, arr, ans);
+        return ans;
+    }
+    private static void dfs(Node root, ArrayList<Integer> arr, ArrayList<ArrayList<Integer>> ans){
+        if(root == null) return;
+        arr.add(root.val);
+        if(root.left == null && root.right == null){
+            ArrayList<Integer> list = new ArrayList<>();
+            list.addAll(arr);
+            ans.add(list);
+        }
+        dfs(root.left, arr, ans);
+        dfs(root.right, arr, ans);
+        arr.remove(arr.size()-1);  // backtracking
     }
 }
