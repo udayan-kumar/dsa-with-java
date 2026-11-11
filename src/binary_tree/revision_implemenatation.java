@@ -362,16 +362,16 @@ public class revision_implemenatation {
         view_right(root.right, level+1, ans);
     }
 
-    // public static ArrayList<Integer> left_view(Node root){
-    //     ArrayList <Integer> ans = new ArrayList<>();
-    //     view_left(root, 0, ans);
-    //     return ans;
-    // }
-    // public static void view_left(Node root, int level, ArrayList<Integer> ans){
-    //     if(root == null) return;
-    //     if(level >= ans.size()) ans.add(root.val);
-    //     else ans.set(level, root.val);
-    //     view_left(root.right, level+1, ans);
-    //     view_left(root.left, level+1, ans);
-    // }
+    public static ArrayList<Integer> left_view(Node root){
+        ArrayList <Integer> ans = new ArrayList<>();
+        view_left(root, 0, ans);
+        return ans;
+    }
+    public static void view_left(Node root, int level, ArrayList<Integer> ans){
+        if(root == null) return;
+        if(level >= ans.size()) ans.add(root.val);
+        else ans.set(level, root.val);
+        view_left(root.right, level+1, ans);
+        view_left(root.left, level+1, ans);
+    }
 }
