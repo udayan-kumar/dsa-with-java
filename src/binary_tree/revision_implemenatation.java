@@ -2,6 +2,8 @@ package src.binary_tree;
 
 import java.util.*;
 
+import src.if_else.integer;
+
 class Node{
     int val;
     Node left;
@@ -85,6 +87,10 @@ public class revision_implemenatation {
         System.out.println(is_balanced(a));
 
         System.out.println(diameter(a));
+
+        System.out.println(right_view(a));
+
+        System.out.println(left_view(a));
     }
 
     private static void display(Node root){
@@ -342,4 +348,30 @@ public class revision_implemenatation {
 
         return 1 + Math.max(levels_diameter(root.left), levels_diameter(root.right));
     }
+
+    public static ArrayList<Integer> right_view(Node root){
+        ArrayList<Integer> ans = new ArrayList<>();
+        view_right(root, 0, ans);
+        return ans;
+    }
+    public static void view_right(Node root, int level, ArrayList<Integer> ans){
+        if(root == null) return;
+        if(level>=ans.size()) ans.add(root.val);
+        else ans.set(level, root.val);
+        view_right(root.left, level+1, ans);
+        view_right(root.right, level+1, ans);
+    }
+
+    // public static ArrayList<Integer> left_view(Node root){
+    //     ArrayList <Integer> ans = new ArrayList<>();
+    //     view_left(root, 0, ans);
+    //     return ans;
+    // }
+    // public static void view_left(Node root, int level, ArrayList<Integer> ans){
+    //     if(root == null) return;
+    //     if(level >= ans.size()) ans.add(root.val);
+    //     else ans.set(level, root.val);
+    //     view_left(root.right, level+1, ans);
+    //     view_left(root.left, level+1, ans);
+    // }
 }
