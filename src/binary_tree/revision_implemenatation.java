@@ -91,6 +91,8 @@ public class revision_implemenatation {
         System.out.println(right_view(a));
 
         System.out.println(left_view(a));
+
+        System.out.println(lowest_common_ancestor(a, 30, 70));
     }
 
     private static void display(Node root){
@@ -374,4 +376,33 @@ public class revision_implemenatation {
         view_left(root.right, level+1, ans);
         view_left(root.left, level+1, ans);
     }
+
+    //! FIRST METHOD TO FIND LOWEST COMMON ANCESTOR
+
+    public static int lowest_common_ancestor(Node root, int p, int q){
+        if(root == null) return 0;
+        if(root.val == p || root.val == q) return root.val;
+        boolean p_lies_left = exist(root.left, p);
+        boolean q_lies_left = exist(root.right, q);
+        if(p_lies_left && q_lies_left) return lowest_common_ancestor(root.left, p, q);
+        else if(!p_lies_left && !q_lies_left) return lowest_common_ancestor(root.right
+            , p, q);
+            else return root.val;
+    }
+    public static boolean exist(Node root, int val){
+        if(root == null) return false;
+        if(root.val == val) return true;
+        return exist(root.left, val) || exist(root.right, val);
+    }
+
+    //! SECOND METHOD TO FIND LOWEST COMMON ANCESTOR
+
+    // public static int lowest_common_ancestor(Node root, int p, int q){
+    //     if(root == null) return 0;
+    //     if(root.val == p || root.val == q) return root.val;
+    //     int l = lowest_common_ancestor(root.left, p, q);
+    //     int r = lowest_common_ancestor(root.right, p, q);
+    //     if(l != 0 && r != 0) return root.val;
+    //     return (l==0) ? r : l;
+    // }
 }
