@@ -2,7 +2,7 @@ package src.binary_search_tree;
 
 import java.util.*;
 
-import src.sorting.insertion_sort;
+import src.binary_search.arranging_coins;
 
 class Node{
     int val;
@@ -39,6 +39,8 @@ public class implementation_binary_search_tree {
         //System.out.println(insert(a, 20));
 
         System.out.println(kth_smallest(a, 3));
+
+        System.out.println(is_bst(a));
     }
 
     private static int min(Node root){
@@ -91,14 +93,34 @@ public class implementation_binary_search_tree {
         if(root == null) return 0;
         ArrayList<Integer> arr = new ArrayList<>();
 
-        inorder(root, arr);
+        inorder_smallest(root, arr);
         return arr.get(index - 1);
     }
-    private static void inorder(Node root, ArrayList<Integer> arr){
+    private static void inorder_smallest(Node root, ArrayList<Integer> arr){
         if(root == null) return;
 
-        inorder(root.left, arr);
+        inorder_smallest(root.left, arr);
         arr.add(root.val);
-        inorder(root.right, arr);
+        inorder_smallest(root.right, arr);
+    }
+
+    private static boolean is_bst(Node root){
+        ArrayList <Integer> ans = new ArrayList<>();
+
+        inorder_bst(root, ans);
+
+        int i = 0;
+        while(ans.size()-1>i){
+            if(ans.get(i)>=ans.get(i+1)) return false;
+            i++;
+        }
+        return true;
+    }
+    private static void inorder_bst(Node root, ArrayList<Integer> ans){
+        if(root == null) return;
+
+        inorder_bst(root.left, ans);
+        ans.add(root.val);
+        inorder_bst(root.right, ans);
     }
 }
