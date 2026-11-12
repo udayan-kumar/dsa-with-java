@@ -36,7 +36,9 @@ public class implementation_binary_search_tree {
 
         System.out.println(range(a, 2, 10));
 
-        System.out.println(insert(a, 20));
+        //System.out.println(insert(a, 20));
+
+        System.out.println(kth_smallest(a, 3));
     }
 
     private static int min(Node root){
@@ -72,7 +74,7 @@ public class implementation_binary_search_tree {
             return 1 + range(root.left, min, max) + range(root.right, min, max);
     }
 
-    private static void insert(Node root, int key){
+    public static void insert(Node root, int key){
         if(root == null) return;
         if(root.val == key) return;
         if(root.val < key){
@@ -83,5 +85,20 @@ public class implementation_binary_search_tree {
             if(root.left == null) root.left = new Node(key);
             else insert(root.left, key);
         }
+    }
+
+    private static int kth_smallest(Node root, int index){
+        if(root == null) return 0;
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        inorder(root, arr);
+        return arr.get(index - 1);
+    }
+    private static void inorder(Node root, ArrayList<Integer> arr){
+        if(root == null) return;
+
+        inorder(root.left, arr);
+        arr.add(root.val);
+        inorder(root.right, arr);
     }
 }
