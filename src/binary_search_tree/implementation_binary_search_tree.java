@@ -1,8 +1,8 @@
 package src.binary_search_tree;
 
-import java.util.ArrayList;
+import java.util.*;
 
-import src.recursion.function_calling_itshelf;
+import src.sorting.insertion_sort;
 
 class Node{
     int val;
@@ -35,6 +35,8 @@ public class implementation_binary_search_tree {
         System.out.println(searching(a, 8));
 
         System.out.println(range(a, 2, 10));
+
+        System.out.println(insert(a, 20));
     }
 
     private static int min(Node root){
@@ -68,5 +70,18 @@ public class implementation_binary_search_tree {
         else if(root.val > max) return range(root.left, min, max);
         else 
             return 1 + range(root.left, min, max) + range(root.right, min, max);
+    }
+
+    private static void insert(Node root, int key){
+        if(root == null) return;
+        if(root.val == key) return;
+        if(root.val < key){
+            if(root.right == null) root.right = new Node(key);
+            else insert(root.right, key);
+        }
+        else{
+            if(root.left == null) root.left = new Node(key);
+            else insert(root.left, key);
+        }
     }
 }
