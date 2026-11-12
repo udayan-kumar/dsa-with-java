@@ -1,5 +1,7 @@
 package src.binary_search_tree;
 
+import src.recursion.function_calling_itshelf;
+
 class Node{
     int val;
     Node left;
@@ -25,6 +27,10 @@ public class implementation_binary_search_tree {
         e.right = f;
 
         System.out.println(min(a));
+
+        System.out.println(max(a));
+
+        System.out.println(searching(a, 8));
     }
 
     private static int min(Node root){
@@ -33,5 +39,22 @@ public class implementation_binary_search_tree {
             temp = temp.left;
         }
         return temp.val;
+    }
+
+    private static int max(Node root){
+        Node temp = root;
+        while(temp.right != null){
+            temp = temp.right;
+        }
+        return temp.val;
+    }
+
+    private static boolean searching(Node root, int target){
+        if(root == null) return false;
+
+        if(root.val == target) return true;
+
+        if(root.val > target) return searching(root.left, target);
+        else return searching(root.right, target);
     }
 }
