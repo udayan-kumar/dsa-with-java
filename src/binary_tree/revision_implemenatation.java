@@ -99,6 +99,8 @@ public class revision_implemenatation {
         System.out.println(preorder_iterative(a));
 
         System.out.println(postorder_iterative(a));
+
+        System.out.println(inorder_iterative(a));
     }
 
     private static void display(Node root){
@@ -491,6 +493,30 @@ public class revision_implemenatation {
             if(top.right != null) st.push(top.right);
         }
         Collections.reverse(ans);
+        return ans;
+    }
+
+    private static ArrayList<Integer> inorder_iterative(Node root){
+        ArrayList<Integer> ans = new ArrayList<>();
+        Stack <Node> st = new Stack<>();
+        Node curr = root;
+        while(st.size()>0 || curr!=null){
+            if(curr != null){
+                if(curr.left != null){
+                    st.push(curr);
+                    curr = curr.left;
+                }
+                else{
+                    ans.add(curr.val);
+                    curr = curr.right;
+                }
+            }
+            else{
+                Node top = st.pop();
+                ans.add(top.val);
+                curr = top.right;
+            }
+        }
         return ans;
     }
 }
