@@ -456,7 +456,7 @@ public class revision_implemenatation {
 
     //! SECOND METHOD TO FIND FLATTEN BINARY TREE
 
-    private static void flatten_binary_linkedlist(Node root){
+    public  static void flatten_binary_linkedlist(Node root){
         if(root == null) return;
         Node lst = root.left;
         Node rst = root.right;
@@ -573,7 +573,7 @@ public class revision_implemenatation {
         }
     }
 
-    private static Node build_tree(int in_order[], int pre_order[]){
+    public static Node build_tree(int in_order[], int pre_order[]){
         int n = in_order.length;
         return build(0, n-1, 0, n-1, in_order, pre_order);
     }
