@@ -2,9 +2,6 @@ package src.binary_tree;
 
 import java.util.*;
 
-import src.if_else.new02_question;
-import src.two_D_array.Arraylists;
-
 class Node{
     int val;
     Node left;
@@ -100,6 +97,8 @@ public class revision_implemenatation {
         //flatten_binary_linkedlist(a);
 
         System.out.println(preorder_iterative(a));
+
+        System.out.println(postorder_iterative(a));
     }
 
     private static void display(Node root){
@@ -477,6 +476,21 @@ public class revision_implemenatation {
             if(top.right != null) st.push(top.right);
             if(top.left != null) st.push(top.left);
         }
+        return ans;
+    }
+
+    private static ArrayList<Integer> postorder_iterative(Node root){
+        ArrayList<Integer> ans = new ArrayList<>();
+        Stack <Node> st = new Stack<>();
+        st.push(root);
+
+        while(st.size()>0){
+            Node top = st.pop();
+            ans.add(top.val);
+            if(top.left != null) st.push(top.left);
+            if(top.right != null) st.push(top.right);
+        }
+        Collections.reverse(ans);
         return ans;
     }
 }
