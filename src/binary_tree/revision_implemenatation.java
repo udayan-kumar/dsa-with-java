@@ -2,8 +2,6 @@ package src.binary_tree;
 
 import java.util.*;
 
-import src.if_else.integer;
-
 class Node{
     int val;
     Node left;
@@ -93,6 +91,10 @@ public class revision_implemenatation {
         System.out.println(left_view(a));
 
         System.out.println(lowest_common_ancestor(a, 30, 70));
+
+        System.out.println(find_distance(a, 30, 60));
+
+        flatten_binary_linkedlist(a);
     }
 
     private static void display(Node root){
@@ -351,12 +353,12 @@ public class revision_implemenatation {
         return 1 + Math.max(levels_diameter(root.left), levels_diameter(root.right));
     }
 
-    public static ArrayList<Integer> right_view(Node root){
+    private static ArrayList<Integer> right_view(Node root){
         ArrayList<Integer> ans = new ArrayList<>();
         view_right(root, 0, ans);
         return ans;
     }
-    public static void view_right(Node root, int level, ArrayList<Integer> ans){
+    private static void view_right(Node root, int level, ArrayList<Integer> ans){
         if(root == null) return;
         if(level>=ans.size()) ans.add(root.val);
         else ans.set(level, root.val);
@@ -364,12 +366,12 @@ public class revision_implemenatation {
         view_right(root.right, level+1, ans);
     }
 
-    public static ArrayList<Integer> left_view(Node root){
+    private static ArrayList<Integer> left_view(Node root){
         ArrayList <Integer> ans = new ArrayList<>();
         view_left(root, 0, ans);
         return ans;
     }
-    public static void view_left(Node root, int level, ArrayList<Integer> ans){
+    private static void view_left(Node root, int level, ArrayList<Integer> ans){
         if(root == null) return;
         if(level >= ans.size()) ans.add(root.val);
         else ans.set(level, root.val);
@@ -379,17 +381,16 @@ public class revision_implemenatation {
 
     //! FIRST METHOD TO FIND LOWEST COMMON ANCESTOR
 
-    public static int lowest_common_ancestor(Node root, int p, int q){
-        if(root == null) return 0;
-        if(root.val == p || root.val == q) return root.val;
+    private static Node lowest_common_ancestor(Node root, int p, int q){
+        if(root == null) return null;
+        if(root.val == p || root.val == q) return root;
         boolean p_lies_left = exist(root.left, p);
         boolean q_lies_left = exist(root.right, q);
         if(p_lies_left && q_lies_left) return lowest_common_ancestor(root.left, p, q);
-        else if(!p_lies_left && !q_lies_left) return lowest_common_ancestor(root.right
-            , p, q);
-            else return root.val;
+        else if(!p_lies_left && !q_lies_left) return lowest_common_ancestor(root.right, p, q);
+        else return root;
     }
-    public static boolean exist(Node root, int val){
+    private static boolean exist(Node root, int val){
         if(root == null) return false;
         if(root.val == val) return true;
         return exist(root.left, val) || exist(root.right, val);
@@ -397,7 +398,7 @@ public class revision_implemenatation {
 
     //! SECOND METHOD TO FIND LOWEST COMMON ANCESTOR
 
-    // public static int lowest_common_ancestor(Node root, int p, int q){
+    // private static int lowest_common_ancestor(Node root, int p, int q){
     //     if(root == null) return 0;
     //     if(root.val == p || root.val == q) return root.val;
     //     int l = lowest_common_ancestor(root.left, p, q);
@@ -405,4 +406,59 @@ public class revision_implemenatation {
     //     if(l != 0 && r != 0) return root.val;
     //     return (l==0) ? r : l;
     // }
+
+    private static int find_distance(Node root, int a, int b){
+        Node lca = lowest_common_ancestor(root, a, b);
+        int[] dis = {0, 0};
+        dfs_dis(lca, a, b, 0, dis);
+        return dis[0] + dis[1];
+    }
+    private static void dfs_dis(Node root, int a, int b, int depth, int[] dis){
+        if(root == null) return;
+        if(root.val == a) dis[0] = depth;
+        if(root.val == b) dis[1] = depth;
+        dfs_dis(root.left, a, b, depth+1, dis);
+        dfs_dis(root.right, a, b, depth+1, dis);
+    }
+
+    //! FIRST METHOD TO FIND FLATTEN BINARY TREE
+
+    // private static void  flatten_binary_linkedlist(Node root){
+    //     ArrayList <Node> arr = new ArrayList<>();
+    //     dfs_linkedlist(root, arr);
+
+    //     for(int i = 0; i<arr.size()-1; i++){
+    //         Node a = arr.get(i);
+    //         Node b = arr.get(i+1);
+    //         a.right = b;
+    //         a.left = null;
+    //     }
+    //     Node last = arr.get(arr.size()-1);
+    //     last.left = null;
+    //     last.right = null;
+    // }
+    // private static void dfs_linkedlist(Node root, ArrayList<Node> arr){
+    //     if(root == null) return;
+    //     arr.add(root);
+    //     dfs_linkedlist(root.left, arr);
+    //     dfs_linkedlist(root.right, arr);
+    // }
+
+    //! SECOND METHOD TO FIND FLATTEN BINARY TREE
+
+    private static void flatten_binary_linkedlist(Node root){
+        if(root == null) return;
+        Node lst = root.left;
+        Node rst = root.right;
+        root.left = null;
+        flatten_binary_linkedlist(lst);
+        flatten_binary_linkedlist(rst);
+        root.right = lst;
+        Node last = root;
+        while(last.right!=null){
+            lst = last.right;
+        }
+        last.right = rst;
+    }
+
 }
