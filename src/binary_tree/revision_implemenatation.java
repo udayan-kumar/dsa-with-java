@@ -101,6 +101,8 @@ public class revision_implemenatation {
         System.out.println(postorder_iterative(a));
 
         System.out.println(inorder_iterative(a));
+
+        System.out.println(boundary_traversal(a));
     }
 
     private static void display(Node root){
@@ -518,5 +520,54 @@ public class revision_implemenatation {
             }
         }
         return ans;
+    }
+
+    private static ArrayList<Integer> boundary_traversal(Node root){
+        ArrayList<Integer> ans = new ArrayList<>();
+        ans.add(root.val);
+        if(root.left == null && root.right == null) return ans;
+        left_boundary(root.left, ans);
+        leaf_nodes(root, ans);
+        right_boundary(root.right, ans);
+        return ans;
+    }
+    // private static void left_boundary(Node root, ArrayList<Integer> ans){
+    //     if(root == null) return;
+    //     if(root.left == null && root.right == null) return;
+    //     ans.add(root.val);
+    //     if(root.left!=null) left_boundary(root.left, ans);
+    //     else left_boundary(root.right, ans);
+    // }
+    private static void left_boundary(Node root, ArrayList<Integer> ans){
+        while(root!=null){
+            if(root.left == null && root.right == null) break;
+            ans.add(root.val);
+            if(root.left != null) root = root.left;
+            else root = root.right;  
+        }
+    }
+    private static void leaf_nodes(Node root, ArrayList<Integer> ans){
+        if(root == null) return;
+        if(root.left == null && root.right == null) ans.add(root.val);
+        leaf_nodes(root.left, ans);
+        leaf_nodes(root.right, ans);
+    }
+    // private static void right_boundary(Node root, ArrayList<Integer> ans){
+    //     if(root == null) return;
+    //     if(root.left == null && root.right == null) return;
+    //     if(root.right != null) right_boundary(root.right, ans);
+    //     else right_boundary(root.left, ans);
+    // }
+    private static void right_boundary(Node root, ArrayList<Integer> ans){
+        ArrayList<Integer> ans2 = new ArrayList<>();
+        while(root != null){
+            if(root.left == null && root.right == null) break;
+            ans2.add(root.val);
+            if(root.right != null) root = root.right;
+            else root = root.left;
+        }
+        for(int i = ans2.size()-1; i>=0; i--){
+            ans.add(ans2.get(i));
+        }
     }
 }
