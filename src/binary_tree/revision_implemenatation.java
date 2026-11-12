@@ -103,6 +103,8 @@ public class revision_implemenatation {
         System.out.println(inorder_iterative(a));
 
         System.out.println(boundary_traversal(a));
+
+        //System.out.println(build_tree({10, 20, 40, 50, 30, 60, 70}, {40, 20, 50, 10, 60, 30, 70 }));
     }
 
     private static void display(Node root){
@@ -569,5 +571,26 @@ public class revision_implemenatation {
         for(int i = ans2.size()-1; i>=0; i--){
             ans.add(ans2.get(i));
         }
+    }
+
+    private static Node build_tree(int in_order[], int pre_order[]){
+        int n = in_order.length;
+        return build(0, n-1, 0, n-1, in_order, pre_order);
+    }
+    private static Node build(int pre_low, int pre_high, int in_low, int in_high, int in_order[], int pre_order[]){
+        if(pre_low > pre_high || in_low > in_high) return null;
+        int val = pre_order[pre_low];
+        Node root = new Node(val);
+        int r = 0; 
+        for(int i = in_low; i<=in_high; i++){
+            if(in_order[i] == val){
+                r = i;
+                break;
+            }
+        }
+        int cnt = r - in_low;
+        root.left = build(pre_low+1, pre_low+cnt, in_low, r-1, in_order, pre_order);
+        root.right = build(pre_low+cnt+1, pre_high, r+1, in_high, in_order, pre_order);
+        return root;
     }
 }
