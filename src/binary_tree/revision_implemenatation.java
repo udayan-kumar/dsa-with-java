@@ -2,6 +2,9 @@ package src.binary_tree;
 
 import java.util.*;
 
+import src.if_else.new02_question;
+import src.two_D_array.Arraylists;
+
 class Node{
     int val;
     Node left;
@@ -94,7 +97,9 @@ public class revision_implemenatation {
 
         System.out.println(find_distance(a, 30, 60));
 
-        flatten_binary_linkedlist(a);
+        //flatten_binary_linkedlist(a);
+
+        System.out.println(preorder_iterative(a));
     }
 
     private static void display(Node root){
@@ -461,4 +466,17 @@ public class revision_implemenatation {
         last.right = rst;
     }
 
+    private static ArrayList<Integer> preorder_iterative(Node root){
+        ArrayList <Integer> ans = new ArrayList<>();
+        Stack <Node> st = new Stack<>();
+        st.push(root);
+
+        while(st.size()>0){
+            Node top = st.pop();
+            ans.add(top.val);
+            if(top.right != null) st.push(top.right);
+            if(top.left != null) st.push(top.left);
+        }
+        return ans;
+    }
 }
