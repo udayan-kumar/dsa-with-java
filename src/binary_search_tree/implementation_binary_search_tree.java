@@ -43,6 +43,8 @@ public class implementation_binary_search_tree {
         System.out.println(is_bst(a));
 
         System.out.println(lowest_common_ancestor_bst(a, 8, 5));
+
+        transform_tree(a);
     }
 
     private static int min(Node root){
@@ -130,5 +132,26 @@ public class implementation_binary_search_tree {
         if(root.val > p && root.val > q) return lowest_common_ancestor_bst(root.left, p, q);
         if(root.val < p && root.val < q) return lowest_common_ancestor_bst(root.right, p, q);
         else return root.val;
+    }
+
+    private static void transform_tree(Node root){
+        ArrayList<Node> arr = new ArrayList<>();
+        inorder_transform(root, arr);
+        Collections.reverse(arr);
+        int sum = 0;
+        for(int i = 0; i<arr.size(); i++){
+            int value = arr.get(i).val;
+            arr.get(i).val = sum;
+            sum += value;
+            System.out.print(sum + " ");
+        }
+        
+    }
+    private static void inorder_transform(Node root, ArrayList<Node> arr){
+        if(root == null) return;
+
+        inorder_transform(root.left, arr);
+        arr.add(root);
+        inorder_transform(root.right, arr);
     }
 }
