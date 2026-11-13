@@ -45,6 +45,10 @@ public class implementation_binary_search_tree {
         System.out.println(lowest_common_ancestor_bst(a, 8, 5));
 
         transform_tree(a);
+        System.out.println();
+
+        int[] arr = {1,2,3,4,5,6,7};
+        System.out.println(sorted_array(arr));
     }
 
     private static int min(Node root){
@@ -172,5 +176,19 @@ public class implementation_binary_search_tree {
         sum += value;
         System.out.print(sum + " ");
         reverse_inorder_transform(root.left);
+    }
+
+    private static Node sorted_array(int[] arr){
+        int n = arr.length;
+
+        return convert(arr, 0, n-1);
+    }
+    private static Node convert(int[] arr, int low, int high){
+        if(low > high) return null;
+        int mid = (low + high)/2;
+        Node root = new Node(arr[mid]);
+        root.left = convert(arr, low, mid-1);
+        root.right = convert(arr, mid+1, high);
+        return root;
     }
 }
