@@ -134,23 +134,43 @@ public class implementation_binary_search_tree {
         else return root.val;
     }
 
-    private static void transform_tree(Node root){
-        ArrayList<Node> arr = new ArrayList<>();
-        reversre_inorder_transform(root, arr);
-        int sum = 0;
-        for(int i = 0; i<arr.size(); i++){
-            int value = arr.get(i).val;
-            arr.get(i).val = sum;
-            sum += value;
-            System.out.print(sum + " ");
-        }
+    //! FIRST METHOD TO TRANSFORM BINARY SEARCH BINARY TREE
+
+    // private static void transform_tree(Node root){
+    //     ArrayList<Node> arr = new ArrayList<>();
+    //     reversre_inorder_transform(root, arr);
+    //     int sum = 0;
+    //     for(int i = 0; i<arr.size(); i++){
+    //         int value = arr.get(i).val;
+    //         arr.get(i).val = sum;
+    //         sum += value;
+    //         System.out.print(sum + " ");
+    //     }
         
+    // }
+    // private static void reversre_inorder_transform(Node root, ArrayList<Node> arr){
+    //     if(root == null) return;
+
+    //     reversre_inorder_transform(root.right, arr);
+    //     arr.add(root);
+    //     reversre_inorder_transform(root.left, arr);
+    // }
+
+    //! SECOND METHOD TO TRANSFORM BINARY SEARCH TREE
+
+    static int sum;
+    private static void transform_tree(Node root){
+        sum = 0;
+        reverse_inorder_transform(root);
     }
-    private static void reversre_inorder_transform(Node root, ArrayList<Node> arr){
+    private static void reverse_inorder_transform(Node root){
         if(root == null) return;
 
-        reversre_inorder_transform(root.right, arr);
-        arr.add(root);
-        reversre_inorder_transform(root.left, arr);
+        reverse_inorder_transform(root.right);
+        int value = root.val;
+        root.val = sum;
+        sum += value;
+        System.out.print(sum + " ");
+        reverse_inorder_transform(root.left);
     }
 }
