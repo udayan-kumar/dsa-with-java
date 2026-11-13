@@ -2,8 +2,6 @@ package src.binary_search_tree;
 
 import java.util.*;
 
-import src.binary_search.arranging_coins;
-
 class Node{
     int val;
     Node left;
@@ -13,6 +11,31 @@ class Node{
         this.val = val;
     }
 }
+
+class Pair{
+    int max;
+    int min;
+
+    Pair(int max, int min){
+        this.max = max;
+        this.min = min;
+    }
+}
+
+class Quad{
+    int max;
+    int min;
+    int size;
+    boolean is_bst;
+
+    Quad(int max, int min, int size, boolean is_bst){
+        this.max = max;
+        this.min = min;
+        this.size = size;
+        this.is_bst = is_bst;
+    }
+}
+
 public class implementation_binary_search_tree {
     public static void main(String[] args) {
         Node a = new Node(9);
@@ -49,6 +72,10 @@ public class implementation_binary_search_tree {
 
         int[] arr = {1,2,3,4,5,6,7};
         System.out.println(sorted_array(arr));
+
+        System.out.println(is_bst_max_min(a));
+
+        System.out.println(largest_bst(a));
     }
 
     private static int min(Node root){
@@ -190,5 +217,47 @@ public class implementation_binary_search_tree {
         root.left = convert(arr, low, mid-1);
         root.right = convert(arr, mid+1, high);
         return root;
+    }
+
+    static boolean flag;
+    private static boolean is_bst_max_min(Node root){
+        flag = true;
+        max_min(root);
+        return flag;
+    }
+    private static Pair max_min(Node root){
+        if(root == null) return new Pair(Integer.MIN_VALUE, Integer.MAX_VALUE);
+
+        Pair left_sub_tree = max_min(root.left);
+        Pair right_sub_tree = max_min(root.right);
+
+        int max = Math.max(root.val, Math.max(left_sub_tree.max, right_sub_tree.max));
+        int min = Math.min(root.val, Math.min(left_sub_tree.min, right_sub_tree.min));
+
+        if(left_sub_tree.max >= root.val || right_sub_tree.min <= root.val){
+            flag = false;
+        }
+
+        return new Pair(max, min);
+    }
+
+    static int max_size;
+    private static int largest_bst(Node root){
+        max_size = 0;
+        helper(root);
+        return max_size;
+    }
+    private static Quad helper(Node root){
+        if(root == null) return new Quad(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, true);
+
+        Quad left_sub_tree = helper(root.left);
+        Quad right_sub_tree = helper(root.right);
+
+        int max = Math.max(root.val, Math.max(left_sub_tree.max, right_sub_tree.max));
+        int min = Math.min(root.val, Math.min(left_sub_tree.min, right_sub_tree.min));
+        int size = 1 + left_sub_tree.size + right_sub_tree.size;
+        boolean is_bst = left_sub_tree.is_bst && right_sub_tree.is_bst && (left_sub_tree.max < root.val) && (right_sub_tree.min > root.val);
+        if(is_bst) max_size = Math.max(size, max_size);
+        return new Quad(max, min, size, is_bst);
     }
 }
