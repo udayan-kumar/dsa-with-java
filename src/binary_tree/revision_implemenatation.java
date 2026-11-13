@@ -22,6 +22,24 @@ class Pair{
     }
 }
 
+class Quad_all{
+    int max;
+    int min;
+    int size;
+    int sum;
+
+    Quad_all(int max, int min, int size, int sum){
+        this.max = max;
+        this.min = min;
+        this.size = size;
+        this.sum = sum;
+    }
+
+    void display(){
+        System.out.println(max + " " + min + " " + size + " " + sum);
+    }
+}
+
 public class revision_implemenatation {
     public static void main(String[] args) {
         Node a = new Node(10);
@@ -105,6 +123,8 @@ public class revision_implemenatation {
         System.out.println(boundary_traversal(a));
 
         //System.out.println(build_tree({10, 20, 40, 50, 30, 60, 70}, {40, 20, 50, 10, 60, 30, 70 }));
+
+        max_min_size_sum(a).display();
     }
 
     private static void display(Node root){
@@ -592,5 +612,19 @@ public class revision_implemenatation {
         root.left = build(pre_low+1, pre_low+cnt, in_low, r-1, in_order, pre_order);
         root.right = build(pre_low+cnt+1, pre_high, r+1, in_high, in_order, pre_order);
         return root;
+    }
+
+     private static Quad_all max_min_size_sum(Node root){
+        if(root == null) return new Quad_all(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 0);
+
+        Quad_all left_sub_tree = max_min_size_sum(root.left); 
+        Quad_all right_sub_tree = max_min_size_sum(root.right);
+
+        int max = Math.max(root.val, Math.max(left_sub_tree.max, right_sub_tree.max));
+        int min = Math.min(root.val, Math.min(left_sub_tree.min, right_sub_tree.min));
+        int size = 1 + left_sub_tree.size + right_sub_tree.size;
+        int sum = root.val + left_sub_tree.sum + right_sub_tree.sum;
+        
+        return new Quad_all(max, min, size, sum);
     }
 }
