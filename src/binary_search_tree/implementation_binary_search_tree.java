@@ -96,6 +96,8 @@ public class implementation_binary_search_tree {
         System.out.println(largest_bst(a));
 
         max_min_size_sum(a).display();
+
+        System.out.println(morris_inorder_traverse(a));
     }
 
     private static int min(Node root){
@@ -293,5 +295,32 @@ public class implementation_binary_search_tree {
         int sum = root.val + left_sub_tree.sum + right_sub_tree.sum;
         
         return new Quad_all(max, min, size, sum);
+    }
+
+    private static ArrayList<Integer> morris_inorder_traverse(Node root){
+        ArrayList <Integer> arr = new ArrayList<>();
+        Node curr = root;
+        while(curr != null){
+            if(curr.left != null){
+                Node predecissor = curr.left;
+                while(predecissor.right != null && predecissor.right != curr){
+                    predecissor = predecissor.right;
+                }
+                if(predecissor.right == null){
+                    predecissor.right = curr;
+                    curr = curr.left;
+                }
+                else{
+                    predecissor.right = null;
+                    arr.add(curr.val);
+                    curr = curr.right;
+                }
+            }
+            else{
+                arr.add(curr.val);
+                curr = curr.right;
+            }
+        }
+        return arr;
     }
 }
