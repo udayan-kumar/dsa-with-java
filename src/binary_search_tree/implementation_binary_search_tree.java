@@ -136,8 +136,7 @@ public class implementation_binary_search_tree {
 
     private static void transform_tree(Node root){
         ArrayList<Node> arr = new ArrayList<>();
-        inorder_transform(root, arr);
-        Collections.reverse(arr);
+        reversre_inorder_transform(root, arr);
         int sum = 0;
         for(int i = 0; i<arr.size(); i++){
             int value = arr.get(i).val;
@@ -147,11 +146,11 @@ public class implementation_binary_search_tree {
         }
         
     }
-    private static void inorder_transform(Node root, ArrayList<Node> arr){
+    private static void reversre_inorder_transform(Node root, ArrayList<Node> arr){
         if(root == null) return;
 
-        inorder_transform(root.left, arr);
+        reversre_inorder_transform(root.right, arr);
         arr.add(root);
-        inorder_transform(root.right, arr);
+        reversre_inorder_transform(root.left, arr);
     }
 }
