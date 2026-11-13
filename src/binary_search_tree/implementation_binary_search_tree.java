@@ -41,6 +41,8 @@ public class implementation_binary_search_tree {
         System.out.println(kth_smallest(a, 3));
 
         System.out.println(is_bst(a));
+
+        System.out.println(lowest_common_ancestor_bst(a, 8, 5));
     }
 
     private static int min(Node root){
@@ -122,5 +124,11 @@ public class implementation_binary_search_tree {
         inorder_bst(root.left, ans);
         ans.add(root.val);
         inorder_bst(root.right, ans);
+    }
+
+    private static int lowest_common_ancestor_bst(Node root, int p, int q){
+        if(root.val > p && root.val > q) return lowest_common_ancestor_bst(root.left, p, q);
+        if(root.val < p && root.val < q) return lowest_common_ancestor_bst(root.right, p, q);
+        else return root.val;
     }
 }
