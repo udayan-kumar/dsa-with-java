@@ -69,38 +69,40 @@ public class implementation_binary_search_tree {
         c.left = g;
         e.right = f;
 
-        System.out.println(min(a));
+        // System.out.println(min(a));
 
-        System.out.println(max(a));
+        // System.out.println(max(a));
 
-        System.out.println(searching(a, 8));
+        // System.out.println(searching(a, 8));
 
-        System.out.println(range(a, 2, 10));
+        // System.out.println(range(a, 2, 10));
 
         //System.out.println(insert(a, 20));
 
-        System.out.println(kth_smallest(a, 3));
+        // System.out.println(kth_smallest(a, 3));
 
-        System.out.println(is_bst(a));
+        // System.out.println(is_bst(a));
 
-        System.out.println(lowest_common_ancestor_bst(a, 8, 5));
+        // System.out.println(lowest_common_ancestor_bst(a, 8, 5));
 
-        transform_tree(a);
-        System.out.println();
+        // transform_tree(a);
+        // System.out.println();
 
-        int[] arr = {1,2,3,4,5,6,7};
-        System.out.println(sorted_array(arr));
+        // int[] arr = {1,2,3,4,5,6,7};
+        // System.out.println(sorted_array(arr));
 
-        System.out.println(is_bst_max_min(a));
+        // System.out.println(is_bst_max_min(a));
 
-        System.out.println(largest_bst(a));
+        // System.out.println(largest_bst(a));
 
-        max_min_size_sum(a).display();
+        //max_min_size_sum(a).display();
 
         System.out.println(morris_inorder_traverse(a));
+
+        System.out.println(morris_is_bst(a));
     }
 
-    private static int min(Node root){
+    public static int min(Node root){
         Node temp = root;
         while(temp.left != null){
             temp = temp.left;
@@ -108,7 +110,7 @@ public class implementation_binary_search_tree {
         return temp.val;
     }
 
-    private static int max(Node root){
+    public static int max(Node root){
         Node temp = root;
         while(temp.right != null){
             temp = temp.right;
@@ -116,7 +118,7 @@ public class implementation_binary_search_tree {
         return temp.val;
     }
 
-    private static boolean searching(Node root, int target){
+    public static boolean searching(Node root, int target){
         if(root == null) return false;
 
         if(root.val == target) return true;
@@ -125,7 +127,7 @@ public class implementation_binary_search_tree {
         else return searching(root.right, target);
     }
 
-    private static int range(Node root, int min, int max){
+    public static int range(Node root, int min, int max){
         if(root == null) return 0;
         if(root.val < min) return range(root.right, min, max);
         else if(root.val > max) return range(root.left, min, max);
@@ -146,14 +148,14 @@ public class implementation_binary_search_tree {
         }
     }
 
-    private static int kth_smallest(Node root, int index){
+    public static int kth_smallest(Node root, int index){
         if(root == null) return 0;
         ArrayList<Integer> arr = new ArrayList<>();
 
         inorder_smallest(root, arr);
         return arr.get(index - 1);
     }
-    private static void inorder_smallest(Node root, ArrayList<Integer> arr){
+    public static void inorder_smallest(Node root, ArrayList<Integer> arr){
         if(root == null) return;
 
         inorder_smallest(root.left, arr);
@@ -161,7 +163,7 @@ public class implementation_binary_search_tree {
         inorder_smallest(root.right, arr);
     }
 
-    private static boolean is_bst(Node root){
+    public static boolean is_bst(Node root){
         ArrayList <Integer> ans = new ArrayList<>();
 
         inorder_bst(root, ans);
@@ -173,7 +175,7 @@ public class implementation_binary_search_tree {
         }
         return true;
     }
-    private static void inorder_bst(Node root, ArrayList<Integer> ans){
+    public static void inorder_bst(Node root, ArrayList<Integer> ans){
         if(root == null) return;
 
         inorder_bst(root.left, ans);
@@ -181,7 +183,7 @@ public class implementation_binary_search_tree {
         inorder_bst(root.right, ans);
     }
 
-    private static int lowest_common_ancestor_bst(Node root, int p, int q){
+    public static int lowest_common_ancestor_bst(Node root, int p, int q){
         if(root.val > p && root.val > q) return lowest_common_ancestor_bst(root.left, p, q);
         if(root.val < p && root.val < q) return lowest_common_ancestor_bst(root.right, p, q);
         else return root.val;
@@ -189,7 +191,7 @@ public class implementation_binary_search_tree {
 
     //! FIRST METHOD TO TRANSFORM BINARY SEARCH BINARY TREE
 
-    // private static void transform_tree(Node root){
+    // public static void transform_tree(Node root){
     //     ArrayList<Node> arr = new ArrayList<>();
     //     reversre_inorder_transform(root, arr);
     //     int sum = 0;
@@ -201,7 +203,7 @@ public class implementation_binary_search_tree {
     //     }
         
     // }
-    // private static void reversre_inorder_transform(Node root, ArrayList<Node> arr){
+    // public static void reversre_inorder_transform(Node root, ArrayList<Node> arr){
     //     if(root == null) return;
 
     //     reversre_inorder_transform(root.right, arr);
@@ -212,11 +214,11 @@ public class implementation_binary_search_tree {
     //! SECOND METHOD TO TRANSFORM BINARY SEARCH TREE
 
     static int sum;
-    private static void transform_tree(Node root){
+    public static void transform_tree(Node root){
         sum = 0;
         reverse_inorder_transform(root);
     }
-    private static void reverse_inorder_transform(Node root){
+    public static void reverse_inorder_transform(Node root){
         if(root == null) return;
 
         reverse_inorder_transform(root.right);
@@ -227,12 +229,12 @@ public class implementation_binary_search_tree {
         reverse_inorder_transform(root.left);
     }
 
-    private static Node sorted_array(int[] arr){
+    public static Node sorted_array(int[] arr){
         int n = arr.length;
 
         return convert(arr, 0, n-1);
     }
-    private static Node convert(int[] arr, int low, int high){
+    public static Node convert(int[] arr, int low, int high){
         if(low > high) return null;
         int mid = (low + high)/2;
         Node root = new Node(arr[mid]);
@@ -242,12 +244,12 @@ public class implementation_binary_search_tree {
     }
 
     static boolean flag;
-    private static boolean is_bst_max_min(Node root){
+    public static boolean is_bst_max_min(Node root){
         flag = true;
         max_min(root);
         return flag;
     }
-    private static Pair max_min(Node root){
+    public static Pair max_min(Node root){
         if(root == null) return new Pair(Integer.MIN_VALUE, Integer.MAX_VALUE);
 
         Pair left_sub_tree = max_min(root.left);
@@ -264,12 +266,12 @@ public class implementation_binary_search_tree {
     }
 
     static int max_size;
-    private static int largest_bst(Node root){
+    public static int largest_bst(Node root){
         max_size = 0;
         helper(root);
         return max_size;
     }
-    private static Quad helper(Node root){
+    public static Quad helper(Node root){
         if(root == null) return new Quad(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, true);
 
         Quad left_sub_tree = helper(root.left);
@@ -283,7 +285,7 @@ public class implementation_binary_search_tree {
         return new Quad(max, min, size, is_bst);
     }
 
-    private static Quad_all max_min_size_sum(Node root){
+    public static Quad_all max_min_size_sum(Node root){
         if(root == null) return new Quad_all(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 0);
 
         Quad_all left_sub_tree = max_min_size_sum(root.left); 
@@ -297,7 +299,7 @@ public class implementation_binary_search_tree {
         return new Quad_all(max, min, size, sum);
     }
 
-    private static ArrayList<Integer> morris_inorder_traverse(Node root){
+    public static ArrayList<Integer> morris_inorder_traverse(Node root){
         ArrayList <Integer> arr = new ArrayList<>();
         Node curr = root;
         while(curr != null){
@@ -322,5 +324,34 @@ public class implementation_binary_search_tree {
             }
         }
         return arr;
+    }
+
+    public static boolean morris_is_bst(Node root){
+        Node curr = root;
+        int previous = 0;
+        while(curr != null){
+            if(curr.left != null){
+                Node predecissor = curr.left;
+                while(predecissor.right != null && predecissor.right != curr){
+                    predecissor = predecissor.right;
+                }
+                if(predecissor.right == null){
+                    predecissor.right = curr;
+                    curr = curr.left;
+                }
+                else{
+                    predecissor.right = null;
+                    if(curr.val <= previous) return false;
+                    previous = curr.val;
+                    curr = curr.right;
+                }
+            }
+            else{
+                if(curr.val <= previous) return false;
+                previous = curr.val;
+                curr = curr.right;
+            }
+        }
+        return true;
     }
 }
