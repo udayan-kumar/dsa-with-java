@@ -36,6 +36,24 @@ class Quad{
     }
 }
 
+class Quad_all{
+    int max;
+    int min;
+    int size;
+    int sum;
+
+    Quad_all(int max, int min, int size, int sum){
+        this.max = max;
+        this.min = min;
+        this.size = size;
+        this.sum = sum;
+    }
+
+    void display(){
+        System.out.println(max + " " + min + " " + size + " " + sum);
+    }
+}
+
 public class implementation_binary_search_tree {
     public static void main(String[] args) {
         Node a = new Node(9);
@@ -76,6 +94,8 @@ public class implementation_binary_search_tree {
         System.out.println(is_bst_max_min(a));
 
         System.out.println(largest_bst(a));
+
+        max_min_size_sum(a).display();
     }
 
     private static int min(Node root){
@@ -259,5 +279,19 @@ public class implementation_binary_search_tree {
         boolean is_bst = left_sub_tree.is_bst && right_sub_tree.is_bst && (left_sub_tree.max < root.val) && (right_sub_tree.min > root.val);
         if(is_bst) max_size = Math.max(size, max_size);
         return new Quad(max, min, size, is_bst);
+    }
+
+    private static Quad_all max_min_size_sum(Node root){
+        if(root == null) return new Quad_all(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 0);
+
+        Quad_all left_sub_tree = max_min_size_sum(root.left); 
+        Quad_all right_sub_tree = max_min_size_sum(root.right);
+
+        int max = Math.max(root.val, Math.max(left_sub_tree.max, right_sub_tree.max));
+        int min = Math.min(root.val, Math.min(left_sub_tree.min, right_sub_tree.min));
+        int size = 1 + left_sub_tree.size + right_sub_tree.size;
+        int sum = root.val + left_sub_tree.sum + right_sub_tree.sum;
+        
+        return new Quad_all(max, min, size, sum);
     }
 }
