@@ -10,6 +10,10 @@ class Node{
     Node(int val){
         this.val = val;
     }
+
+    void display_delete(){
+        System.out.print(val + " ");
+    }
 }
 
 class Pair{
@@ -51,10 +55,6 @@ class Quad_all{
 
     void display(){
         System.out.println(max + " " + min + " " + size + " " + sum);
-    }
-
-    void display_flatten(Node root){
-        System.out.print(root.val + " ");
     }
 }
 
@@ -105,7 +105,9 @@ public class implementation_binary_search_tree {
 
         System.out.println(morris_is_bst(a));
 
-        morris_flatten_binary_linkedlist(a);
+        //morris_flatten_binary_linkedlist(a);
+
+        delete_leaf_node(a, 8).display_delete();
     }
 
     public static int min(Node root){
@@ -375,5 +377,18 @@ public class implementation_binary_search_tree {
             }
             curr = curr.right;
         }
+    }
+
+    public static Node delete_leaf_node(Node root, int target){
+        if(root.val > target){
+            root.left = delete_leaf_node(root.left, target);
+        }
+        else if(root.val < target){
+            root.right = delete_leaf_node(root.right, target);
+        }
+        else return null;
+
+        return root;
+
     }
 }
