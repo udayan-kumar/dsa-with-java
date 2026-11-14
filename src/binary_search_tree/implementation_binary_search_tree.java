@@ -52,6 +52,10 @@ class Quad_all{
     void display(){
         System.out.println(max + " " + min + " " + size + " " + sum);
     }
+
+    void display_flatten(Node root){
+        System.out.print(root.val + " ");
+    }
 }
 
 public class implementation_binary_search_tree {
@@ -100,6 +104,8 @@ public class implementation_binary_search_tree {
         System.out.println(morris_inorder_traverse(a));
 
         System.out.println(morris_is_bst(a));
+
+        morris_flatten_binary_linkedlist(a);
     }
 
     public static int min(Node root){
@@ -353,5 +359,21 @@ public class implementation_binary_search_tree {
             }
         }
         return true;
+    }
+
+    public static void morris_flatten_binary_linkedlist(Node root){
+        if(root == null) return;
+        Node curr = root;
+        while(curr != null){
+            if(curr.left != null){
+                Node predecessor = curr.left;
+            while(curr.right != null) predecessor = predecessor.right;
+            
+            predecessor.right = curr.right;
+            curr.right = curr.left;
+            curr.left = null;
+            }
+            curr = curr.right;
+        }
     }
 }
