@@ -107,7 +107,7 @@ public class implementation_binary_search_tree {
 
         //morris_flatten_binary_linkedlist(a);
 
-        delete_leaf_node(a, 8).display_delete();
+        delete_node(a, 11).display_delete();
     }
 
     public static int min(Node root){
@@ -379,14 +379,31 @@ public class implementation_binary_search_tree {
         }
     }
 
-    public static Node delete_leaf_node(Node root, int target){
+    public static Node delete_node(Node root, int target){
+        if(root == null) return null;
         if(root.val > target){
-            root.left = delete_leaf_node(root.left, target);
+            root.left = delete_node(root.left, target);
         }
         else if(root.val < target){
-            root.right = delete_leaf_node(root.right, target);
+            root.right = delete_node(root.right, target);
         }
-        else return null;
+        else{
+            // case 1: leaf node
+            if(root.left == null && root.right == null) return null;
+            
+            // case 2: 1 child node
+            if(root.left == null) return root.right;
+            if(root.right == null) return root.left;
+
+            // case 3: 2 child node
+            Node pred = root.left;
+            while(pred.right != null) pred = pred.right;
+            root.left = delete_node(root.left, pred.val);
+            root.right = delete_node(root.right, pred.val);
+            pred.left = root.left;
+            pred.right = root.right;
+            return pred;
+        }
 
         return root;
 
