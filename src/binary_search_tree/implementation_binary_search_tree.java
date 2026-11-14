@@ -73,33 +73,33 @@ public class implementation_binary_search_tree {
         c.left = g;
         e.right = f;
 
-        // System.out.println(min(a));
+        System.out.println(min(a));
 
-        // System.out.println(max(a));
+        System.out.println(max(a));
 
-        // System.out.println(searching(a, 8));
+        System.out.println(searching(a, 8));
 
-        // System.out.println(range(a, 2, 10));
+        System.out.println(range(a, 2, 10));
 
         //System.out.println(insert(a, 20));
 
-        // System.out.println(kth_smallest(a, 3));
+        System.out.println(kth_smallest(a, 3));
 
-        // System.out.println(is_bst(a));
+        System.out.println(is_bst(a));
 
-        // System.out.println(lowest_common_ancestor_bst(a, 8, 5));
+        System.out.println(lowest_common_ancestor_bst(a, 8, 5));
 
-        // transform_tree(a);
-        // System.out.println();
+        transform_tree(a);
+        System.out.println();
 
-        // int[] arr = {1,2,3,4,5,6,7};
-        // System.out.println(sorted_array(arr));
+        int[] arr = {1,2,3,4,5,6,7};
+        System.out.println(sorted_array(arr));
 
-        // System.out.println(is_bst_max_min(a));
+        System.out.println(is_bst_max_min(a));
 
-        // System.out.println(largest_bst(a));
+        System.out.println(largest_bst(a));
 
-        //max_min_size_sum(a).display();
+        max_min_size_sum(a).display();
 
         System.out.println(morris_inorder_traverse(a));
 
